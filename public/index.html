@@ -1,0 +1,755 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ride Share</title>
+
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#fbce07">
+    <meta name="apple-mobile-web-app-title" content="Ride Share">
+    <meta name="application-name" content="Ride Share">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/icons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/icons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    <meta name="theme-color" content="#fbce07">
+
+    <!--<link rel="stylesheet" href="/dist/app.min.css" />-->
+    <style>
+       /*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ *//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}footer,header,menu,nav{display:block}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}b{font-weight:700}h1{margin:.67em 0;font-size:2em}img{border:0}svg:not(:root){overflow:hidden}code{font-family:monospace,monospace;font-size:1em}button,input,textarea{margin:0;font:inherit;color:inherit}button{overflow:visible}button{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type=checkbox],input[type=radio]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}textarea{overflow:auto}/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */@media print{*,:after,:before{color:#000!important;text-shadow:none!important;background:0 0!important;-webkit-box-shadow:none!important;box-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}a[href^="#"]:after,a[href^="javascript:"]:after{content:""}img{page-break-inside:avoid}img{max-width:100%!important}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}.navbar{display:none}.label{border:1px solid #000}}@font-face{font-family:'Glyphicons Halflings';src:url(../fonts/glyphicons-halflings-regular.eot);src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),url(../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}.glyphicon{position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.glyphicon-cloud:before{content:"\2601"}.glyphicon-user:before{content:"\e008"}.glyphicon-remove:before{content:"\e014"}.glyphicon-off:before{content:"\e017"}.glyphicon-time:before{content:"\e023"}.glyphicon-repeat:before{content:"\e030"}.glyphicon-refresh:before{content:"\e031"}.glyphicon-italic:before{content:"\e049"}.glyphicon-text-height:before{content:"\e050"}.glyphicon-text-width:before{content:"\e051"}.glyphicon-list:before{content:"\e056"}.glyphicon-pause:before{content:"\e073"}.glyphicon-remove-sign:before{content:"\e083"}.glyphicon-info-sign:before{content:"\e086"}.glyphicon-remove-circle:before{content:"\e088"}.glyphicon-arrow-left:before{content:"\e091"}.glyphicon-arrow-right:before{content:"\e092"}.glyphicon-arrow-up:before{content:"\e093"}.glyphicon-random:before{content:"\e110"}.glyphicon-circle-arrow-right:before{content:"\e131"}.glyphicon-circle-arrow-left:before{content:"\e132"}.glyphicon-circle-arrow-up:before{content:"\e133"}.glyphicon-link:before{content:"\e144"}.glyphicon-sort:before{content:"\e150"}.glyphicon-collapse-up:before{content:"\e160"}.glyphicon-log-in:before{content:"\e161"}.glyphicon-log-out:before{content:"\e163"}.glyphicon-new-window:before{content:"\e164"}.glyphicon-open:before{content:"\e167"}.glyphicon-header:before{content:"\e180"}.glyphicon-level-up:before{content:"\e204"}.glyphicon-alert:before{content:"\e209"}.glyphicon-apple:before{content:"\f8ff"}.glyphicon-scale:before{content:"\e230"}.glyphicon-modal-window:before{content:"\e237"}.glyphicon-text-size:before{content:"\e241"}.glyphicon-text-color:before{content:"\e242"}.glyphicon-text-background:before{content:"\e243"}.glyphicon-console:before{content:"\e254"}.glyphicon-menu-left:before{content:"\e257"}.glyphicon-menu-right:before{content:"\e258"}.glyphicon-menu-up:before{content:"\e260"}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px;-webkit-tap-highlight-color:transparent}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}button,input,textarea{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}a:focus,a:hover{color:#23527c;text-decoration:underline}a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}img{vertical-align:middle}.carousel-inner>.item>a>img,.carousel-inner>.item>img{display:block;max-width:100%;height:auto}.img-circle{border-radius:50%}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}[role=button]{cursor:pointer}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}.h1,.h2,.h3,h1,h2,h3{margin-top:20px;margin-bottom:10px}.h4,.h5,.h6,h4,h5,h6{margin-top:10px;margin-bottom:10px}.h1,h1{font-size:36px}.h2,h2{font-size:30px}.h3,h3{font-size:24px}.h4,h4{font-size:18px}.h5,h5{font-size:14px}.h6,h6{font-size:12px}p{margin:0 0 10px}.text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}.text-success{color:#3c763d}a.text-success:focus,a.text-success:hover{color:#2b542c}.text-info{color:#31708f}a.text-info:focus,a.text-info:hover{color:#245269}ul{margin-top:0;margin-bottom:10px}ul ul{margin-bottom:0}code{font-family:Menlo,Monaco,Consolas,"Courier New",monospace}code{padding:2px 4px;font-size:90%;color:#c7254e;background-color:#f9f2f4;border-radius:4px}.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9{position:relative;min-height:1px;padding-right:15px;padding-left:15px}@media (min-width:768px){.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9{float:left}.col-sm-12{width:100%}.col-sm-11{width:91.66666667%}.col-sm-10{width:83.33333333%}.col-sm-9{width:75%}.col-sm-8{width:66.66666667%}.col-sm-7{width:58.33333333%}.col-sm-6{width:50%}.col-sm-5{width:41.66666667%}.col-sm-4{width:33.33333333%}.col-sm-3{width:25%}.col-sm-2{width:16.66666667%}.col-sm-1{width:8.33333333%}.col-sm-push-12{left:100%}.col-sm-push-11{left:91.66666667%}.col-sm-push-10{left:83.33333333%}.col-sm-push-9{left:75%}.col-sm-push-8{left:66.66666667%}.col-sm-push-7{left:58.33333333%}.col-sm-push-6{left:50%}.col-sm-push-5{left:41.66666667%}.col-sm-push-4{left:33.33333333%}.col-sm-push-3{left:25%}.col-sm-push-2{left:16.66666667%}.col-sm-push-1{left:8.33333333%}.col-sm-push-0{left:auto}.col-sm-offset-12{margin-left:100%}.col-sm-offset-11{margin-left:91.66666667%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width:992px){.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9{float:left}.col-md-12{width:100%}.col-md-11{width:91.66666667%}.col-md-10{width:83.33333333%}.col-md-9{width:75%}.col-md-8{width:66.66666667%}.col-md-7{width:58.33333333%}.col-md-6{width:50%}.col-md-5{width:41.66666667%}.col-md-4{width:33.33333333%}.col-md-3{width:25%}.col-md-2{width:16.66666667%}.col-md-1{width:8.33333333%}.col-md-push-12{left:100%}.col-md-push-11{left:91.66666667%}.col-md-push-10{left:83.33333333%}.col-md-push-9{left:75%}.col-md-push-8{left:66.66666667%}.col-md-push-7{left:58.33333333%}.col-md-push-6{left:50%}.col-md-push-5{left:41.66666667%}.col-md-push-4{left:33.33333333%}.col-md-push-3{left:25%}.col-md-push-2{left:16.66666667%}.col-md-push-1{left:8.33333333%}.col-md-push-0{left:auto}.col-md-offset-12{margin-left:100%}.col-md-offset-11{margin-left:91.66666667%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-9{margin-left:75%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-6{margin-left:50%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-3{margin-left:25%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width:1200px){.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9{float:left}.col-lg-12{width:100%}.col-lg-11{width:91.66666667%}.col-lg-10{width:83.33333333%}.col-lg-9{width:75%}.col-lg-8{width:66.66666667%}.col-lg-7{width:58.33333333%}.col-lg-6{width:50%}.col-lg-5{width:41.66666667%}.col-lg-4{width:33.33333333%}.col-lg-3{width:25%}.col-lg-2{width:16.66666667%}.col-lg-1{width:8.33333333%}.col-lg-push-12{left:100%}.col-lg-push-11{left:91.66666667%}.col-lg-push-10{left:83.33333333%}.col-lg-push-9{left:75%}.col-lg-push-8{left:66.66666667%}.col-lg-push-7{left:58.33333333%}.col-lg-push-6{left:50%}.col-lg-push-5{left:41.66666667%}.col-lg-push-4{left:33.33333333%}.col-lg-push-3{left:25%}.col-lg-push-2{left:16.66666667%}.col-lg-push-1{left:8.33333333%}.col-lg-push-0{left:auto}.col-lg-offset-12{margin-left:100%}.col-lg-offset-11{margin-left:91.66666667%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}label{display:inline-block;max-width:100%;margin-bottom:5px;font-weight:700}input[type=search]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}input[type=checkbox],input[type=radio]{margin:4px 0 0;line-height:normal}input[type=file]{display:block}input[type=range]{display:block;width:100%}input[type=checkbox]:focus,input[type=file]:focus,input[type=radio]:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.form-control{display:block;width:100%;height:34px;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}.form-control:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}.form-control::-moz-placeholder{color:#999;opacity:1}.form-control:-ms-input-placeholder{color:#999}.form-control::-webkit-input-placeholder{color:#999}.form-control[disabled],.form-control[readonly]{background-color:#eee;opacity:1}.form-control[disabled]{cursor:not-allowed}textarea.form-control{height:auto}input[type=search]{-webkit-appearance:none}@media screen and (-webkit-min-device-pixel-ratio:0){input[type=date].form-control,input[type=datetime-local].form-control,input[type=month].form-control,input[type=time].form-control{line-height:34px}.input-group-sm input[type=date],.input-group-sm input[type=datetime-local],.input-group-sm input[type=month],.input-group-sm input[type=time],input[type=date].input-sm,input[type=datetime-local].input-sm,input[type=month].input-sm,input[type=time].input-sm{line-height:30px}.input-group-lg input[type=date],.input-group-lg input[type=datetime-local],.input-group-lg input[type=month],.input-group-lg input[type=time],input[type=date].input-lg,input[type=datetime-local].input-lg,input[type=month].input-lg,input[type=time].input-lg{line-height:46px}}.form-group{margin-bottom:15px}.checkbox,.radio{position:relative;display:block;margin-top:10px;margin-bottom:10px}.checkbox label,.radio label{min-height:20px;padding-left:20px;margin-bottom:0;font-weight:400;cursor:pointer}.checkbox input[type=checkbox],.radio input[type=radio]{position:absolute;margin-left:-20px}.checkbox+.checkbox,.radio+.radio{margin-top:-5px}input[type=checkbox].disabled,input[type=checkbox][disabled],input[type=radio].disabled,input[type=radio][disabled]{cursor:not-allowed}.checkbox.disabled label,.radio.disabled label{cursor:not-allowed}.form-control-static{min-height:34px;padding-top:7px;padding-bottom:7px;margin-bottom:0}.form-control-static.input-lg,.form-control-static.input-sm{padding-right:0;padding-left:0}.input-sm{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}textarea.input-sm{height:auto}.form-group-sm .form-control{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}.form-group-sm textarea.form-control{height:auto}.form-group-sm .form-control-static{height:30px;min-height:32px;padding:6px 10px;font-size:12px;line-height:1.5}.input-lg{height:46px;padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}textarea.input-lg{height:auto}.form-group-lg .form-control{height:46px;padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}.form-group-lg textarea.form-control{height:auto}.form-group-lg .form-control-static{height:46px;min-height:38px;padding:11px 16px;font-size:18px;line-height:1.3333333}.has-success .checkbox,.has-success .control-label,.has-success .radio,.has-success.checkbox label,.has-success.radio label{color:#3c763d}.has-success .form-control{border-color:#3c763d;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-success .form-control:focus{border-color:#2b542c;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168}.has-success .input-group-addon{color:#3c763d;background-color:#dff0d8;border-color:#3c763d}.has-error .checkbox,.has-error .control-label,.has-error .radio,.has-error.checkbox label,.has-error.radio label{color:#a94442}.has-error .form-control{border-color:#a94442;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-error .form-control:focus{border-color:#843534;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483}.has-error .input-group-addon{color:#a94442;background-color:#f2dede;border-color:#a94442}.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.btn.focus,.btn:focus,.btn:hover{color:#333;text-decoration:none}.btn.active,.btn:active{background-image:none;outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn.disabled,.btn[disabled]{cursor:not-allowed;-webkit-box-shadow:none;box-shadow:none;opacity:.65}a.btn.disabled{pointer-events:none}.btn-default{color:#333;background-color:#fff;border-color:#ccc}.btn-default.focus,.btn-default:focus{color:#333;background-color:#e6e6e6;border-color:#8c8c8c}.btn-default:hover{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default.active.focus,.btn-default.active:focus,.btn-default.active:hover,.btn-default:active.focus,.btn-default:active:focus,.btn-default:active:hover,.open>.dropdown-toggle.btn-default.focus,.open>.dropdown-toggle.btn-default:focus,.open>.dropdown-toggle.btn-default:hover{color:#333;background-color:#d4d4d4;border-color:#8c8c8c}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{background-image:none}.btn-default.disabled,.btn-default.disabled.active,.btn-default.disabled.focus,.btn-default.disabled:active,.btn-default.disabled:focus,.btn-default.disabled:hover,.btn-default[disabled],.btn-default[disabled].active,.btn-default[disabled].focus,.btn-default[disabled]:active,.btn-default[disabled]:focus,.btn-default[disabled]:hover{background-color:#fff;border-color:#ccc}.btn-success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}.btn-success.focus,.btn-success:focus{color:#fff;background-color:#449d44;border-color:#255625}.btn-success:hover{color:#fff;background-color:#449d44;border-color:#398439}.btn-success.active,.btn-success:active,.open>.dropdown-toggle.btn-success{color:#fff;background-color:#449d44;border-color:#398439}.btn-success.active.focus,.btn-success.active:focus,.btn-success.active:hover,.btn-success:active.focus,.btn-success:active:focus,.btn-success:active:hover,.open>.dropdown-toggle.btn-success.focus,.open>.dropdown-toggle.btn-success:focus,.open>.dropdown-toggle.btn-success:hover{color:#fff;background-color:#398439;border-color:#255625}.btn-success.active,.btn-success:active,.open>.dropdown-toggle.btn-success{background-image:none}.btn-success.disabled,.btn-success.disabled.active,.btn-success.disabled.focus,.btn-success.disabled:active,.btn-success.disabled:focus,.btn-success.disabled:hover,.btn-success[disabled],.btn-success[disabled].active,.btn-success[disabled].focus,.btn-success[disabled]:active,.btn-success[disabled]:focus,.btn-success[disabled]:hover{background-color:#5cb85c;border-color:#4cae4c}.btn-info{color:#fff;background-color:#5bc0de;border-color:#46b8da}.btn-info.focus,.btn-info:focus{color:#fff;background-color:#31b0d5;border-color:#1b6d85}.btn-info:hover{color:#fff;background-color:#31b0d5;border-color:#269abc}.btn-info.active,.btn-info:active,.open>.dropdown-toggle.btn-info{color:#fff;background-color:#31b0d5;border-color:#269abc}.btn-info.active.focus,.btn-info.active:focus,.btn-info.active:hover,.btn-info:active.focus,.btn-info:active:focus,.btn-info:active:hover,.open>.dropdown-toggle.btn-info.focus,.open>.dropdown-toggle.btn-info:focus,.open>.dropdown-toggle.btn-info:hover{color:#fff;background-color:#269abc;border-color:#1b6d85}.btn-info.active,.btn-info:active,.open>.dropdown-toggle.btn-info{background-image:none}.btn-info.disabled,.btn-info.disabled.active,.btn-info.disabled.focus,.btn-info.disabled:active,.btn-info.disabled:focus,.btn-info.disabled:hover,.btn-info[disabled],.btn-info[disabled].active,.btn-info[disabled].focus,.btn-info[disabled]:active,.btn-info[disabled]:focus,.btn-info[disabled]:hover{background-color:#5bc0de;border-color:#46b8da}.btn-link{font-weight:400;color:#337ab7;border-radius:0}.btn-link,.btn-link.active,.btn-link:active,.btn-link[disabled]{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}.btn-link,.btn-link:active,.btn-link:focus,.btn-link:hover{border-color:transparent}.btn-link:focus,.btn-link:hover{color:#23527c;text-decoration:underline;background-color:transparent}.btn-link[disabled]:focus,.btn-link[disabled]:hover{color:#777;text-decoration:none}.btn-group-lg>.btn,.btn-lg{padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}.btn-group-sm>.btn,.btn-sm{padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}.btn-block{display:block;width:100%}.btn-block+.btn-block{margin-top:5px}input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-block{width:100%}.fade{opacity:0;-webkit-transition:opacity .15s linear;-o-transition:opacity .15s linear;transition:opacity .15s linear}.fade.in{opacity:1}.collapse{display:none}.collapse.in{display:block}.collapsing{position:relative;height:0;overflow:hidden;-webkit-transition-timing-function:ease;-o-transition-timing-function:ease;transition-timing-function:ease;-webkit-transition-duration:.35s;-o-transition-duration:.35s;transition-duration:.35s;-webkit-transition-property:height,visibility;-o-transition-property:height,visibility;transition-property:height,visibility}.dropdown{position:relative}.dropdown-toggle:focus{outline:0}.dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175)}.dropdown-menu>li>a{display:block;padding:3px 20px;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap}.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{color:#262626;text-decoration:none;background-color:#f5f5f5}.dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{color:#fff;text-decoration:none;background-color:#337ab7;outline:0}.dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{color:#777}.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{text-decoration:none;cursor:not-allowed;background-color:transparent;background-image:none}.open>.dropdown-menu{display:block}.open>a{outline:0}.dropdown-menu-right{right:0;left:auto}.dropdown-menu-left{right:auto;left:0}.dropdown-header{display:block;padding:3px 20px;font-size:12px;line-height:1.42857143;color:#777;white-space:nowrap}.dropdown-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:990}.navbar-fixed-bottom .dropdown .dropdown-menu{top:auto;bottom:100%;margin-bottom:2px}@media (min-width:768px){.navbar-right .dropdown-menu{right:0;left:auto}.navbar-right .dropdown-menu-left{right:auto;left:0}}.btn-group{position:relative;display:inline-block;vertical-align:middle}.btn-group>.btn{position:relative;float:left}.btn-group>.btn.active,.btn-group>.btn:active,.btn-group>.btn:focus,.btn-group>.btn:hover{z-index:2}.btn-group .btn+.btn,.btn-group .btn+.btn-group,.btn-group .btn-group+.btn,.btn-group .btn-group+.btn-group{margin-left:-1px}.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){border-radius:0}.btn-group>.btn:first-child{margin-left:0}.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){border-top-right-radius:0;border-bottom-right-radius:0}.btn-group>.btn:last-child:not(:first-child),.btn-group>.dropdown-toggle:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}.btn-group>.btn-group{float:left}.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn{border-radius:0}.btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle{border-top-right-radius:0;border-bottom-right-radius:0}.btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child{border-top-left-radius:0;border-bottom-left-radius:0}.btn-group .dropdown-toggle:active,.btn-group.open .dropdown-toggle{outline:0}.btn-group>.btn+.dropdown-toggle{padding-right:8px;padding-left:8px}.btn-group>.btn-lg+.dropdown-toggle{padding-right:12px;padding-left:12px}.btn-group.open .dropdown-toggle{-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn-group.open .dropdown-toggle.btn-link{-webkit-box-shadow:none;box-shadow:none}[data-toggle=buttons]>.btn input[type=checkbox],[data-toggle=buttons]>.btn input[type=radio],[data-toggle=buttons]>.btn-group>.btn input[type=checkbox],[data-toggle=buttons]>.btn-group>.btn input[type=radio]{position:absolute;clip:rect(0,0,0,0);pointer-events:none}.input-group{position:relative;display:table;border-collapse:separate}.input-group[class*=col-]{float:none;padding-right:0;padding-left:0}.input-group .form-control{position:relative;z-index:2;float:left;width:100%;margin-bottom:0}.input-group-lg>.form-control,.input-group-lg>.input-group-addon,.input-group-lg>.input-group-btn>.btn{height:46px;padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}textarea.input-group-lg>.form-control,textarea.input-group-lg>.input-group-addon,textarea.input-group-lg>.input-group-btn>.btn{height:auto}.input-group-sm>.form-control,.input-group-sm>.input-group-addon,.input-group-sm>.input-group-btn>.btn{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon,textarea.input-group-sm>.input-group-btn>.btn{height:auto}.input-group .form-control,.input-group-addon,.input-group-btn{display:table-cell}.input-group .form-control:not(:first-child):not(:last-child),.input-group-addon:not(:first-child):not(:last-child),.input-group-btn:not(:first-child):not(:last-child){border-radius:0}.input-group-addon,.input-group-btn{width:1%;white-space:nowrap;vertical-align:middle}.input-group-addon{padding:6px 12px;font-size:14px;font-weight:400;line-height:1;color:#555;text-align:center;background-color:#eee;border:1px solid #ccc;border-radius:4px}.input-group-addon.input-sm{padding:5px 10px;font-size:12px;border-radius:3px}.input-group-addon.input-lg{padding:10px 16px;font-size:18px;border-radius:6px}.input-group-addon input[type=checkbox],.input-group-addon input[type=radio]{margin-top:0}.input-group .form-control:first-child,.input-group-addon:first-child,.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group>.btn,.input-group-btn:first-child>.dropdown-toggle,.input-group-btn:last-child>.btn-group:not(:last-child)>.btn,.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle){border-top-right-radius:0;border-bottom-right-radius:0}.input-group-addon:first-child{border-right:0}.input-group .form-control:last-child,.input-group-addon:last-child,.input-group-btn:first-child>.btn-group:not(:first-child)>.btn,.input-group-btn:first-child>.btn:not(:first-child),.input-group-btn:last-child>.btn,.input-group-btn:last-child>.btn-group>.btn,.input-group-btn:last-child>.dropdown-toggle{border-top-left-radius:0;border-bottom-left-radius:0}.input-group-addon:last-child{border-left:0}.input-group-btn{position:relative;font-size:0;white-space:nowrap}.input-group-btn>.btn{position:relative}.input-group-btn>.btn+.btn{margin-left:-1px}.input-group-btn>.btn:active,.input-group-btn>.btn:focus,.input-group-btn>.btn:hover{z-index:2}.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group{margin-right:-1px}.input-group-btn:last-child>.btn,.input-group-btn:last-child>.btn-group{z-index:2;margin-left:-1px}.nav{padding-left:0;margin-bottom:0;list-style:none}.nav>li{position:relative;display:block}.nav>li>a{position:relative;display:block;padding:10px 15px}.nav>li>a:focus,.nav>li>a:hover{text-decoration:none;background-color:#eee}.nav>li.disabled>a{color:#777}.nav>li.disabled>a:focus,.nav>li.disabled>a:hover{color:#777;text-decoration:none;cursor:not-allowed;background-color:transparent}.nav .open>a,.nav .open>a:focus,.nav .open>a:hover{background-color:#eee;border-color:#337ab7}.nav>li>a>img{max-width:none}.tab-content>.active{display:block}.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}@media (min-width:768px){.navbar{border-radius:4px}}@media (min-width:768px){.navbar-header{float:left}}.navbar-collapse{padding-right:15px;padding-left:15px;overflow-x:visible;-webkit-overflow-scrolling:touch;border-top:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}.navbar-collapse.in{overflow-y:auto}@media (min-width:768px){.navbar-collapse{width:auto;border-top:0;-webkit-box-shadow:none;box-shadow:none}.navbar-collapse.collapse{display:block!important;height:auto!important;padding-bottom:0;overflow:visible!important}.navbar-collapse.in{overflow-y:visible}.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse,.navbar-static-top .navbar-collapse{padding-right:0;padding-left:0}}.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:340px}@media (max-device-width:480px) and (orientation:landscape){.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:200px}}.container-fluid>.navbar-collapse,.container-fluid>.navbar-header,.container>.navbar-collapse,.container>.navbar-header{margin-right:-15px;margin-left:-15px}@media (min-width:768px){.container-fluid>.navbar-collapse,.container-fluid>.navbar-header,.container>.navbar-collapse,.container>.navbar-header{margin-right:0;margin-left:0}}.navbar-static-top{z-index:1000;border-width:0 0 1px}@media (min-width:768px){.navbar-static-top{border-radius:0}}.navbar-fixed-bottom,.navbar-fixed-top{position:fixed;right:0;left:0;z-index:1030}@media (min-width:768px){.navbar-fixed-bottom,.navbar-fixed-top{border-radius:0}}.navbar-fixed-top{top:0;border-width:0 0 1px}.navbar-fixed-bottom{bottom:0;margin-bottom:0;border-width:1px 0 0}.navbar-toggle{position:relative;float:right;padding:9px 10px;margin-top:8px;margin-right:15px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}.navbar-toggle:focus{outline:0}.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}.navbar-toggle .icon-bar+.icon-bar{margin-top:4px}@media (min-width:768px){.navbar-toggle{display:none}}.navbar-nav{margin:7.5px -15px}.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}@media (max-width:767px){.navbar-nav .open .dropdown-menu{position:static;float:none;width:auto;margin-top:0;background-color:transparent;border:0;-webkit-box-shadow:none;box-shadow:none}.navbar-nav .open .dropdown-menu .dropdown-header,.navbar-nav .open .dropdown-menu>li>a{padding:5px 15px 5px 25px}.navbar-nav .open .dropdown-menu>li>a{line-height:20px}.navbar-nav .open .dropdown-menu>li>a:focus,.navbar-nav .open .dropdown-menu>li>a:hover{background-image:none}}@media (min-width:768px){.navbar-nav{float:left;margin:0}.navbar-nav>li{float:left}.navbar-nav>li>a{padding-top:15px;padding-bottom:15px}}.navbar-form{padding:10px 15px;margin-top:8px;margin-right:-15px;margin-bottom:8px;margin-left:-15px;border-top:1px solid transparent;border-bottom:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1)}@media (min-width:768px){.navbar-form .form-group{display:inline-block;margin-bottom:0;vertical-align:middle}.navbar-form .form-control{display:inline-block;width:auto;vertical-align:middle}.navbar-form .form-control-static{display:inline-block}.navbar-form .input-group{display:inline-table;vertical-align:middle}.navbar-form .input-group .form-control,.navbar-form .input-group .input-group-addon,.navbar-form .input-group .input-group-btn{width:auto}.navbar-form .input-group>.form-control{width:100%}.navbar-form .control-label{margin-bottom:0;vertical-align:middle}.navbar-form .checkbox,.navbar-form .radio{display:inline-block;margin-top:0;margin-bottom:0;vertical-align:middle}.navbar-form .checkbox label,.navbar-form .radio label{padding-left:0}.navbar-form .checkbox input[type=checkbox],.navbar-form .radio input[type=radio]{position:relative;margin-left:0}}@media (max-width:767px){.navbar-form .form-group{margin-bottom:5px}.navbar-form .form-group:last-child{margin-bottom:0}}@media (min-width:768px){.navbar-form{width:auto;padding-top:0;padding-bottom:0;margin-right:0;margin-left:0;border:0;-webkit-box-shadow:none;box-shadow:none}}.navbar-nav>li>.dropdown-menu{margin-top:0;border-top-left-radius:0;border-top-right-radius:0}.navbar-fixed-bottom .navbar-nav>li>.dropdown-menu{margin-bottom:0;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:0;border-bottom-left-radius:0}.navbar-btn{margin-top:8px;margin-bottom:8px}.navbar-btn.btn-sm{margin-top:10px;margin-bottom:10px}.navbar-text{margin-top:15px;margin-bottom:15px}@media (min-width:768px){.navbar-text{float:left;margin-right:15px;margin-left:15px}}@media (min-width:768px){.navbar-left{float:left!important}.navbar-right{float:right!important;margin-right:-15px}.navbar-right~.navbar-right{margin-right:0}}.navbar-default{background-color:#f8f8f8;border-color:#e7e7e7}.navbar-default .navbar-text{color:#777}.navbar-default .navbar-nav>li>a{color:#777}.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#333;background-color:transparent}.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:focus,.navbar-default .navbar-nav>.active>a:hover{color:#555;background-color:#e7e7e7}.navbar-default .navbar-nav>.disabled>a,.navbar-default .navbar-nav>.disabled>a:focus,.navbar-default .navbar-nav>.disabled>a:hover{color:#ccc;background-color:transparent}.navbar-default .navbar-toggle{border-color:#ddd}.navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover{background-color:#ddd}.navbar-default .navbar-toggle .icon-bar{background-color:#888}.navbar-default .navbar-collapse,.navbar-default .navbar-form{border-color:#e7e7e7}.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a:focus,.navbar-default .navbar-nav>.open>a:hover{color:#555;background-color:#e7e7e7}@media (max-width:767px){.navbar-default .navbar-nav .open .dropdown-menu>li>a{color:#777}.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{color:#333;background-color:transparent}.navbar-default .navbar-nav .open .dropdown-menu>.active>a,.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{color:#555;background-color:#e7e7e7}.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a,.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:hover{color:#ccc;background-color:transparent}}.navbar-default .navbar-link{color:#777}.navbar-default .navbar-link:hover{color:#333}.navbar-default .btn-link{color:#777}.navbar-default .btn-link:focus,.navbar-default .btn-link:hover{color:#333}.navbar-default .btn-link[disabled]:focus,.navbar-default .btn-link[disabled]:hover{color:#ccc}.label{display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em}a.label:focus,a.label:hover{color:#fff;text-decoration:none;cursor:pointer}.label:empty{display:none}.btn .label{position:relative;top:-1px}.label-default{background-color:#777}.label-default[href]:focus,.label-default[href]:hover{background-color:#5e5e5e}.label-success{background-color:#5cb85c}.label-success[href]:focus,.label-success[href]:hover{background-color:#449d44}.label-info{background-color:#5bc0de}.label-info[href]:focus,.label-info[href]:hover{background-color:#31b0d5}.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:4px}.alert h4{margin-top:0;color:inherit}.alert .alert-link{font-weight:700}.alert>p,.alert>ul{margin-bottom:0}.alert>p+p{margin-top:5px}.alert-success{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.alert-success .alert-link{color:#2b542c}.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.alert-info .alert-link{color:#245269}@-webkit-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@-o-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}.list-group{padding-left:0;margin-bottom:20px}.list-group-item{position:relative;display:block;padding:10px 15px;margin-bottom:-1px;background-color:#fff;border:1px solid #ddd}.list-group-item:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.list-group-item:last-child{margin-bottom:0;border-bottom-right-radius:4px;border-bottom-left-radius:4px}a.list-group-item,button.list-group-item{color:#555}a.list-group-item .list-group-item-heading,button.list-group-item .list-group-item-heading{color:#333}a.list-group-item:focus,a.list-group-item:hover,button.list-group-item:focus,button.list-group-item:hover{color:#555;text-decoration:none;background-color:#f5f5f5}button.list-group-item{width:100%;text-align:left}.list-group-item.disabled,.list-group-item.disabled:focus,.list-group-item.disabled:hover{color:#777;cursor:not-allowed;background-color:#eee}.list-group-item.disabled .list-group-item-heading,.list-group-item.disabled:focus .list-group-item-heading,.list-group-item.disabled:hover .list-group-item-heading{color:inherit}.list-group-item.disabled .list-group-item-text,.list-group-item.disabled:focus .list-group-item-text,.list-group-item.disabled:hover .list-group-item-text{color:#777}.list-group-item.active,.list-group-item.active:focus,.list-group-item.active:hover{z-index:2;color:#fff;background-color:#337ab7;border-color:#337ab7}.list-group-item.active .list-group-item-heading,.list-group-item.active:focus .list-group-item-heading,.list-group-item.active:hover .list-group-item-heading{color:inherit}.list-group-item.active .list-group-item-text,.list-group-item.active:focus .list-group-item-text,.list-group-item.active:hover .list-group-item-text{color:#c7ddef}.list-group-item-success{color:#3c763d;background-color:#dff0d8}a.list-group-item-success,button.list-group-item-success{color:#3c763d}a.list-group-item-success .list-group-item-heading,button.list-group-item-success .list-group-item-heading{color:inherit}a.list-group-item-success:focus,a.list-group-item-success:hover,button.list-group-item-success:focus,button.list-group-item-success:hover{color:#3c763d;background-color:#d0e9c6}a.list-group-item-success.active,a.list-group-item-success.active:focus,a.list-group-item-success.active:hover,button.list-group-item-success.active,button.list-group-item-success.active:focus,button.list-group-item-success.active:hover{color:#fff;background-color:#3c763d;border-color:#3c763d}.list-group-item-info{color:#31708f;background-color:#d9edf7}a.list-group-item-info,button.list-group-item-info{color:#31708f}a.list-group-item-info .list-group-item-heading,button.list-group-item-info .list-group-item-heading{color:inherit}a.list-group-item-info:focus,a.list-group-item-info:hover,button.list-group-item-info:focus,button.list-group-item-info:hover{color:#31708f;background-color:#c4e3f3}a.list-group-item-info.active,a.list-group-item-info.active:focus,a.list-group-item-info.active:hover,button.list-group-item-info.active,button.list-group-item-info.active:focus,button.list-group-item-info.active:hover{color:#fff;background-color:#31708f;border-color:#31708f}.list-group-item-heading{margin-top:0;margin-bottom:5px}.list-group-item-text{margin-bottom:0;line-height:1.3}.panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:4px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}.panel-body{padding:15px}.panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-left-radius:3px;border-top-right-radius:3px}.panel-heading>.dropdown .dropdown-toggle{color:inherit}.panel-title{margin-top:0;margin-bottom:0;font-size:16px;color:inherit}.panel-title>a{color:inherit}.panel-footer{padding:10px 15px;background-color:#f5f5f5;border-top:1px solid #ddd;border-bottom-right-radius:3px;border-bottom-left-radius:3px}.panel>.list-group,.panel>.panel-collapse>.list-group{margin-bottom:0}.panel>.list-group .list-group-item,.panel>.panel-collapse>.list-group .list-group-item{border-width:1px 0;border-radius:0}.panel>.list-group:first-child .list-group-item:first-child,.panel>.panel-collapse>.list-group:first-child .list-group-item:first-child{border-top:0;border-top-left-radius:3px;border-top-right-radius:3px}.panel>.list-group:last-child .list-group-item:last-child,.panel>.panel-collapse>.list-group:last-child .list-group-item:last-child{border-bottom:0;border-bottom-right-radius:3px;border-bottom-left-radius:3px}.panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child{border-top-left-radius:0;border-top-right-radius:0}.panel-heading+.list-group .list-group-item:first-child{border-top-width:0}.list-group+.panel-footer{border-top-width:0}.panel-group{margin-bottom:20px}.panel-group .panel{margin-bottom:0;border-radius:4px}.panel-group .panel+.panel{margin-top:5px}.panel-group .panel-heading{border-bottom:0}.panel-group .panel-heading+.panel-collapse>.list-group,.panel-group .panel-heading+.panel-collapse>.panel-body{border-top:1px solid #ddd}.panel-group .panel-footer{border-top:0}.panel-group .panel-footer+.panel-collapse .panel-body{border-bottom:1px solid #ddd}.panel-default{border-color:#ddd}.panel-default>.panel-heading{color:#333;background-color:#f5f5f5;border-color:#ddd}.panel-default>.panel-heading+.panel-collapse>.panel-body{border-top-color:#ddd}.panel-default>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#ddd}.panel-success{border-color:#d6e9c6}.panel-success>.panel-heading{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.panel-success>.panel-heading+.panel-collapse>.panel-body{border-top-color:#d6e9c6}.panel-success>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#d6e9c6}.panel-info{border-color:#bce8f1}.panel-info>.panel-heading{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.panel-info>.panel-heading+.panel-collapse>.panel-body{border-top-color:#bce8f1}.panel-info>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#bce8f1}.close{float:right;font-size:21px;font-weight:700;line-height:1;color:#000;text-shadow:0 1px 0 #fff;opacity:.2}.close:focus,.close:hover{color:#000;text-decoration:none;cursor:pointer;opacity:.5}button.close{-webkit-appearance:none;padding:0;cursor:pointer;background:0 0;border:0}.modal-open{overflow:hidden}.modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;display:none;overflow:hidden;-webkit-overflow-scrolling:touch;outline:0}.modal.fade .modal-dialog{-webkit-transition:-webkit-transform .3s ease-out;-o-transition:-o-transform .3s ease-out;transition:transform .3s ease-out;-webkit-transform:translate(0,-25%);-ms-transform:translate(0,-25%);-o-transform:translate(0,-25%);transform:translate(0,-25%)}.modal.in .modal-dialog{-webkit-transform:translate(0,0);-ms-transform:translate(0,0);-o-transform:translate(0,0);transform:translate(0,0)}.modal-open .modal{overflow-x:hidden;overflow-y:auto}.modal-dialog{position:relative;width:auto;margin:10px}.modal-content{position:relative;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #999;border:1px solid rgba(0,0,0,.2);border-radius:6px;outline:0;-webkit-box-shadow:0 3px 9px rgba(0,0,0,.5);box-shadow:0 3px 9px rgba(0,0,0,.5)}.modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1040;background-color:#000}.modal-backdrop.fade{opacity:0}.modal-backdrop.in{opacity:.5}.modal-header{min-height:16.43px;padding:15px;border-bottom:1px solid #e5e5e5}.modal-header .close{margin-top:-2px}.modal-title{margin:0;line-height:1.42857143}.modal-body{position:relative;padding:15px}.modal-footer{padding:15px;text-align:right;border-top:1px solid #e5e5e5}.modal-footer .btn+.btn{margin-bottom:0;margin-left:5px}.modal-footer .btn-group .btn+.btn{margin-left:-1px}.modal-footer .btn-block+.btn-block{margin-left:0}.modal-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}@media (min-width:768px){.modal-dialog{width:600px;margin:30px auto}.modal-content{-webkit-box-shadow:0 5px 15px rgba(0,0,0,.5);box-shadow:0 5px 15px rgba(0,0,0,.5)}.modal-sm{width:300px}}@media (min-width:992px){.modal-lg{width:900px}}.tooltip{position:absolute;z-index:1070;display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;font-style:normal;font-weight:400;line-height:1.42857143;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;opacity:0;line-break:auto}.tooltip.in{opacity:.9}.tooltip.top{padding:5px 0;margin-top:-3px}.tooltip.right{padding:0 5px;margin-left:3px}.tooltip.bottom{padding:5px 0;margin-top:3px}.tooltip.left{padding:0 5px;margin-left:-3px}.tooltip-inner{max-width:200px;padding:3px 8px;color:#fff;text-align:center;background-color:#000;border-radius:4px}.tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}.tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#000}.tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#000}.tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#000}.tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#000}.tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#000}.tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#000}.tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#000}.tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#000}.popover{position:absolute;top:0;left:0;z-index:1060;display:none;max-width:276px;padding:1px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;font-style:normal;font-weight:400;line-height:1.42857143;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.2);border-radius:6px;-webkit-box-shadow:0 5px 10px rgba(0,0,0,.2);box-shadow:0 5px 10px rgba(0,0,0,.2);line-break:auto}.popover.top{margin-top:-10px}.popover.right{margin-left:10px}.popover.bottom{margin-top:10px}.popover.left{margin-left:-10px}.popover-title{padding:8px 14px;margin:0;font-size:14px;background-color:#f7f7f7;border-bottom:1px solid #ebebeb;border-radius:5px 5px 0 0}.popover-content{padding:9px 14px}.popover>.arrow,.popover>.arrow:after{position:absolute;display:block;width:0;height:0;border-color:transparent;border-style:solid}.popover>.arrow{border-width:11px}.popover>.arrow:after{content:"";border-width:10px}.popover.top>.arrow{bottom:-11px;left:50%;margin-left:-11px;border-top-color:#999;border-top-color:rgba(0,0,0,.25);border-bottom-width:0}.popover.top>.arrow:after{bottom:1px;margin-left:-10px;content:" ";border-top-color:#fff;border-bottom-width:0}.popover.right>.arrow{top:50%;left:-11px;margin-top:-11px;border-right-color:#999;border-right-color:rgba(0,0,0,.25);border-left-width:0}.popover.right>.arrow:after{bottom:-10px;left:1px;content:" ";border-right-color:#fff;border-left-width:0}.popover.bottom>.arrow{top:-11px;left:50%;margin-left:-11px;border-top-width:0;border-bottom-color:#999;border-bottom-color:rgba(0,0,0,.25)}.popover.bottom>.arrow:after{top:1px;margin-left:-10px;content:" ";border-top-width:0;border-bottom-color:#fff}.popover.left>.arrow{top:50%;right:-11px;margin-top:-11px;border-right-width:0;border-left-color:#999;border-left-color:rgba(0,0,0,.25)}.popover.left>.arrow:after{right:1px;bottom:-10px;content:" ";border-right-width:0;border-left-color:#fff}.carousel{position:relative}.carousel-inner{position:relative;width:100%;overflow:hidden}.carousel-inner>.item{position:relative;display:none;-webkit-transition:.6s ease-in-out left;-o-transition:.6s ease-in-out left;transition:.6s ease-in-out left}.carousel-inner>.item>a>img,.carousel-inner>.item>img{line-height:1}@media all and (transform-3d),(-webkit-transform-3d){.carousel-inner>.item{-webkit-transition:-webkit-transform .6s ease-in-out;-o-transition:-o-transform .6s ease-in-out;transition:transform .6s ease-in-out;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000px;perspective:1000px}.carousel-inner>.item.active.right,.carousel-inner>.item.next{left:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}.carousel-inner>.item.active.left,.carousel-inner>.item.prev{left:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}.carousel-inner>.item.active,.carousel-inner>.item.next.left,.carousel-inner>.item.prev.right{left:0;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}}.carousel-inner>.active,.carousel-inner>.next,.carousel-inner>.prev{display:block}.carousel-inner>.active{left:0}.carousel-inner>.next,.carousel-inner>.prev{position:absolute;top:0;width:100%}.carousel-inner>.next{left:100%}.carousel-inner>.prev{left:-100%}.carousel-inner>.next.left,.carousel-inner>.prev.right{left:0}.carousel-inner>.active.left{left:-100%}.carousel-inner>.active.right{left:100%}.carousel-control{position:absolute;top:0;bottom:0;left:0;width:15%;font-size:20px;color:#fff;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.6);opacity:.5}.carousel-control.left{background-image:-webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);background-image:-o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));background-image:linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);background-repeat:repeat-x}.carousel-control.right{right:0;left:auto;background-image:-webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);background-image:-o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));background-image:linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);background-repeat:repeat-x}.carousel-control:focus,.carousel-control:hover{color:#fff;text-decoration:none;outline:0;opacity:.9}.carousel-control .icon-next,.carousel-control .icon-prev{position:absolute;top:50%;z-index:5;display:inline-block;margin-top:-10px}.carousel-control .icon-prev{left:50%;margin-left:-10px}.carousel-control .icon-next{right:50%;margin-right:-10px}.carousel-control .icon-next,.carousel-control .icon-prev{width:20px;height:20px;font-family:serif;line-height:1}.carousel-control .icon-prev:before{content:'\2039'}.carousel-control .icon-next:before{content:'\203a'}.carousel-indicators{position:absolute;bottom:10px;left:50%;z-index:15;width:60%;padding-left:0;margin-left:-30%;text-align:center;list-style:none}.carousel-indicators li{display:inline-block;width:10px;height:10px;margin:1px;text-indent:-999px;cursor:pointer;background-color:rgba(0,0,0,0);border:1px solid #fff;border-radius:10px}.carousel-indicators .active{width:12px;height:12px;margin:0;background-color:#fff}@media screen and (min-width:768px){.carousel-control .icon-next,.carousel-control .icon-prev{width:30px;height:30px;margin-top:-15px;font-size:30px}.carousel-control .icon-prev{margin-left:-15px}.carousel-control .icon-next{margin-right:-15px}.carousel-indicators{bottom:20px}}.container-fluid:after,.container-fluid:before,.container:after,.container:before,.modal-footer:after,.modal-footer:before,.nav:after,.nav:before,.navbar-collapse:after,.navbar-collapse:before,.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before,.panel-body:after,.panel-body:before{display:table;content:" "}.container-fluid:after,.container:after,.modal-footer:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.panel-body:after{clear:both}.center-block{display:block;margin-right:auto;margin-left:auto}.hide{display:none!important}.show{display:block!important}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important}.affix{position:fixed}.visible-lg,.visible-md,.visible-sm{display:none!important}.visible-lg-block,.visible-md-block,.visible-sm-block{display:none!important}@media (min-width:768px) and (max-width:991px){.visible-sm{display:block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-block{display:block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md{display:block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-block{display:block!important}}@media (min-width:1200px){.visible-lg{display:block!important}}@media (min-width:1200px){.visible-lg-block{display:block!important}}@media (min-width:768px) and (max-width:991px){.hidden-sm{display:none!important}}@media (min-width:992px) and (max-width:1199px){.hidden-md{display:none!important}}@media (min-width:1200px){.hidden-lg{display:none!important}}body,html{height:100%;margin:0;padding:0}.panel{border-radius:0;text-align:left}.termsAndConditions{text-align:right;font-size:11px;font-style:italic;text-decoration:underline;cursor:pointer}.panel-default>.panel-heading{font-weight:700;font-size:16px;background-color:#fbce07;border-color:#fbce07;font-variant:small-caps;border-radius:0;text-align:left}.outerdiv{border:1px solid #dd1d21;background-color:#fff;padding-top:15px;margin-top:10%}.logindivdetail{padding-top:20px}.pdtop15{padding-top:15px}.nopd{padding-left:0}.bbottom2{border-bottom:2px solid #000;padding-bottom:5px}#map{height:100%}#type-selector{color:#fff;background-color:#4d90fe;padding:5px 11px 0 11px}#type-selector label{font-family:Roboto;font-size:13px;font-weight:300}#target{width:345px}.height100{height:100%}.navbar{margin-bottom:0}.active{background-color:#009211;color:#fff}.active:hover{background-color:#fff;color:#009211}.panel-default>.panel-heading{font-weight:700;font-size:16px;background-color:#fbce07;border-color:#fbce07;font-variant:small-caps;border-radius:0;text-align:left}.panel{border-radius:0;text-align:left}.btn-shell-df{background-color:#dd1d21;color:#fff;border-color:#dd1d21;font-weight:700;border-radius:0;height:50px;font-variant:small-caps}.btn-shell-df:hover{background-color:#fff;color:#dd1d21;border-color:#dd1d21}.form-control{border-radius:0}.input-group-addon{border-radius:0}#verifyMailIdModal,#verifyTokenModal{margin-top:12%;width:60%}#verifyModalBody,#verifyTokenModalBody{padding:25px}#verifyModalBodyHeader,#verifyTokenModalBodyHeader{padding-left:25px;font-weight:700}#verifyModalHeight,#verifyTokenModalHeight{height:310px}.techBug{font-size:11px;font-style:italic;padding-right:35px}.signout-modalfooter{color:gray;text-decoration:underline;cursor:pointer}.btn[disabled]{background-color:#ce4a4a}#verifyTokenAnimate{visibility:hidden}.glyphicon-refresh-animate{-animation:spin .7s infinite linear;-webkit-animation:spin2 .7s infinite linear}@-webkit-keyframes spin2{from{-webkit-transform:rotate(0)}to{-webkit-transform:rotate(360deg)}}@keyframes spin{from{transform:scale(1) rotate(0)}to{transform:scale(1) rotate(360deg)}}.mailIdDisplay{font-style:italic;color:grey}.italic{font-style:italic}@-webkit-keyframes fadein{from{bottom:0;opacity:0}to{bottom:30px;opacity:1}}@keyframes fadein{from{bottom:0;opacity:0}to{bottom:30px;opacity:1}}@-webkit-keyframes fadeout{from{bottom:30px;opacity:1}to{bottom:0;opacity:0}}@keyframes fadeout{from{bottom:30px;opacity:1}to{bottom:0;opacity:0}}@media screen and (min-width:600px) and (max-width:800px){.col-md-2{float:left;position:relative;min-height:1px;padding-right:5px;padding-left:5px}}@media screen and (max-width:600px){.col-md-2{float:left;position:relative;min-height:1px;padding-right:0;padding-left:0}#verifyMailIdModal,#verifyTokenModal{margin-top:25%;width:94%}#verifyModalBody,#verifyTokenModalBody{padding:20px}#verifyModalHeight{height:340px}#verifyTokenModalHeight{height:350px}.btn-shell-df{margin-top:20px}.logText{padding-left:15px}.modal-dialog{width:auto}}.navbar{background-color:#fff;border-bottom:1px solid #dd1d21;color:#000;border-radius:0}.navHead{font-size:18px;font-variant:small-caps}.btop{border-top:2px solid #fff}.btoph:hover{border-top:2px solid #dd1d21;color:#dd1d21}.btoph{border-top:2px solid #fff;transition:all .2s}.modal-dialog{width:95%}.modal-header{font-variant:small-caps;background-color:#fbce07;font-variant:small-caps;min-height:0;padding:10px}.nop{padding:0}.modal-body-upcoming{background-color:#fff}.modal-content{border-radius:0}.imga{margin:15px;width:100px;border:5px solid #e1e1e1;transition:width .5s,margin .5s}.feature-head{color:#dd1d21;font-weight:700}.list-group-item:last-child{margin-bottom:0;border-bottom-right-radius:0;border-bottom-left-radius:0}.list-group-item:first-child{border-top-left-radius:0;border-top-right-radius:0}.imga:hover{margin:3px;width:130px;border:10px double #dd1d21}.persDetails{position:relative;top:-5px;background-color:#fff;border:1px solid grey;font-variant:small-caps;font-weight:700}.center{text-align:center;margin-top:25px}.container{background-color:#fff;padding-bottom:30px}.nav>li>a:focus,.nav>li>a:hover{text-decoration:none;background-color:#fff;color:#dd1d21}.logText:hover{cursor:pointer;color:#dd1d21}.navbar-toggle .icon-bar+.icon-bar{background-color:#dd1d21}.navbar-toggle .icon-bar{background-color:#dd1d21}.navbar-toggle{background-color:#fbce07;border-radius:0}.navbar-toggle .icon-bar{width:22px;transition:all .2s}.navbar-toggle .top-bar{transform:rotate(45deg);transform-origin:10% 10%}.navbar-toggle .middle-bar{opacity:0}.navbar-toggle .bottom-bar{transform:rotate(-45deg);transform-origin:10% 90%}.navbar-toggle.collapsed .top-bar{transform:rotate(0)}.navbar-toggle.collapsed .middle-bar{opacity:1}.navbar-toggle.collapsed .bottom-bar{transform:rotate(0)}
+
+        a {
+            color: black;
+        }
+
+        a:visited {
+            color: black;
+        }
+
+        a:hover {
+            color: black;
+        }
+
+        a:link {
+            color: black;
+        }
+
+        a:active {
+            color: black;
+        }
+
+        .panel-body b {
+            margin-bottom: 5px;
+            display: block;
+        }
+        .pnl{border-bottom: 1px solid grey !important;}
+                .panel-title {   
+             font-weight: 600;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse"
+                    type="button" value="aaa">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
+                    </button>
+
+
+                <h4 class="navbar-text btop navHead  logText">Ride Share</h4>
+
+
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left" id="leftItems">
+
+                    <li class="btoph" id="addH"></li>
+
+                    <li class="btoph">
+                        <a class="navHead" data-target="#myModal" data-toggle="modal" href="#">
+                      About
+                   </a>
+                    </li>
+
+                    <li class="btoph">
+                        <a class="navHead" data-target="#myModalUpcoming" data-toggle="modal" href="#">
+                      Upcoming Features
+                </a>
+                    </li>
+                </ul>
+
+
+            </div>
+
+
+
+        </div>
+    </nav>
+
+
+    <div class="modal fade" id="myModalVerifyUser" role="dialog">
+        <div class="modal-dialog verifyMailIdModal" id="verifyMailIdModal">
+            <div class="modal-content" id="verifyModalHeight">
+                <div class="modal-header" id="verifyModalBodyHeader">
+                    <h4> Verify your Org Email Id</h4>
+                </div>
+                <div class="modal-body col-sm-12 modal-body-upcoming" id="verifyModalBody">
+                    <div class="form-group nopd col-md-12" style="padding-top: 15px;">
+                        <label for="email">ENTER YOUR ORG EMAIL ID</label>
+                        <div class="input-group">
+                            <input class="form-control" id="userShellMailId" placeholder="Org Email Id" type="text" />
+                            <span class="input-group-addon" id="basic-addon3">@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 nopd pdtop15 ">
+                        <input class="form-control btn btn-shell-df" onclick="saveShellMailId();" type="button" value="VERIFY MAIL" />
+                    </div>
+                </div>
+                <div class="modal-footer techBug signout-modalfooter" onclick="signOut();">
+                    Signout
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalVerifyToken" role="dialog">
+        <div class="modal-dialog " id="verifyTokenModal">
+            <div class="modal-content" id="verifyTokenModalHeight">
+                <div class="modal-header" id="verifyTokenModalBodyHeader">
+                    <h4> Verify your Email Id</h4>
+                </div>
+                <div class="modal-body col-sm-12 modal-body-upcoming" id="verifyTokenModalBody">
+                    <div class="form-group input-group col-md-12" style="padding-top: 15px;padding-right: 15px;">
+                        <label for="email" id="emailIdPlaceHolder">ENTER THE TOKEN RECEIVED TO YOUR ORG EMAIL ID: </label>
+                        <input class="form-control" id="usertoken" placeholder="Enter the token" type="number" />
+
+
+                    </div>
+                    <div class="form-group col-md-4 nopd pdtop15 ">
+                        <button class="form-control btn btn-shell-df" onclick="verifyTheUserToken();">                            
+                            <span> VERIFY </span>
+                            <span id="verifyTokenAnimate" class="glyphicon glyphicon-repeat glyphicon-refresh-animate"></span>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="modal-footer techBug signout-modalfooter" onclick="signOut();">
+                    Signout
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="myModalUpcoming" role="dialog">
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4> Upcoming features</h4>
+                </div>
+
+                <div class="modal-body col-sm-12 modal-body-upcoming">
+                    <div class="list-group">
+                        <div class="list-group-item ">
+                            <h3 class="list-group-item-heading feature-head">Intercity Travel</h3>
+                            <p class="list-group-item-text">Most of us travel to our hometown during the weekend</p>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <div class="list-group-item ">
+                            <h3 class="list-group-item-heading feature-head">Traffic condition based suggestions</h3>
+                            <p class="list-group-item-text">Pairing up the most optimal driver and passengers</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">FAQ</h4>
+                </div>
+
+                <div class="modal-body col-sm-12 nop">
+
+                    <div class="container col-sm-12">
+
+                        <div class="accordionContainer" style="margin-top: 15px;">
+
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                        <div class="panel-heading pnl" style="">
+                                            <h4 class="panel-title">
+                                                WHAT IS THIS APP
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="collapse1" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+
+                                            <br/>
+                                            <b>
+                                              WHAT IS THIS APP
+                                            </b>
+                                            <p>
+                                                The app tries to solve the fundametal of car pooling i.e. suggesting people who stay near your route, and its upto to person
+                                                who is offering ride and person taking the ride to communicate and plan the
+                                                ride.
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                              HOW DO I REGISTER 
+                                            </b>
+                                            <p>
+                                                You authorise with Google and verify using the official email id.
+                                            </p>
+
+                                            <br/>
+                                            <b>
+                                                 WHY AUTHORISE VIA GOOGLE
+                                            </b>
+                                            <p>
+                                                Its a better user experience and we dont have build a seperate login module.And its more secure
+
+                                            </p>
+
+                                            <br/>
+                                            <b>
+                                                 WHAT DO YOU STORE FROM GOOGLE
+                                            </b>
+                                            <p>
+                                                Nothing!
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                CAN I BOOK A RIDE
+                                            </b>
+                                            <p>
+                                                You dont book a ride, You request for a ride.
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 WHAT IS DIFFERENCE BETWEEN BOOKING AND REQUESTING
+                                            </b>
+                                            <p>
+                                                Booking a ride: The app is responsible for  all the things that happen <br/>                                                Request a ride: The scope of the app ends after the suggesting you the ride
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 WHY DONT YOU TAKE RESPONSIBILITY
+                                            </b>
+                                            <p>
+                                                Developers dont take any responsibility, Thats the universal truth!
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 WHY DOESNT THE APP ALLOCATE ME RIDE AUTOMATICALLY, WHY JUST SUGGEST
+                                            </b>
+                                            <p>
+                                                Developers dont own the car, Its upto the consent of the person who is offering the ride.
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 HOW DO I ENSURE MY FELLOW EMPLOYEE PICKS ME UP AT THE RIGHT TIME AND RIGHT PLACE
+                                            </b>
+                                            <p>
+                                                You can communicate well in advance and decide on the place and time, The app doesnt doesnt track the rider or the requestor
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 CAN I TRACK MY RIDE
+                                            </b>
+                                            <p>
+                                                No! We havent and we will not implement this feature
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 AS A PERSON OFFERING THE RIDE I WANT THE FUEL COSTS TO BE SHARED, HOW DOES THE APP ENSURE THIS
+                                            </b>
+                                            <p>
+                                                The app doesnt suggest what to pay and whom to pay.Every car has different fuel efficieny so we cant have fixed price and
+                                                its not the problem we are trying to solve.
+
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 THIS APP IS NO WAY NEAR WHAT WE GET FROM OF MARKET CAR POOLING APPS, WHY IS IT SO
+                                            </b>
+                                            <p>
+                                                The fundamental problem in car pooling is knowing people who stay near my rotue/home,so we just focus on solving the fundamental
+                                                problem.
+                                                <br/> So we dont do tracking,payments, acceptance,rejection, Gender preference,Rating
+                                                etc etc. More features require more effort and thinking, more bandwidth =
+                                                more money, and we dont have any budget.<br/> Other apps charge you money
+                                                and we wont.
+
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#securityPrivacyId">
+                                        <div class="panel-heading pnl">
+                                            <h4 class="panel-title ">
+                                                SECURITY & PRIVACY
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="securityPrivacyId" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <b>
+                                                 IS THIS APP SECURE
+                                            </b>
+                                            <p>
+                                                We think so, If you find any flaws please catch hold of the developers
+
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                                 SHOULD I GIVE MY EXACT HOME ADDRESS
+                                            </b>
+                                            <p>
+                                                No need, nearest landmark would do and whatever you give, we store the destination ~1km away (This was bug in implementation,but
+                                                later promoted as a feature)
+                                            </p>
+                                            <br/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#performanceId">
+                                        <div class="panel-heading pnl">
+                                            <h4 class="panel-title">
+                                                PERFORMANCE
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="performanceId" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <b>
+                                                 IS THIS APP PERFORMANT, HOW MUCH BANDWIDTH IS CONSUMED
+                                            </b>
+                                            <p>
+                                                The whole app is less than 500kb,We measure Time to be Interactive as our metric<br/>                                                On a Moto G (1st Gen) and on Slow 3G network these are the results<br/> Page
+                                                load for the first time takes 3.3 Seconds<br/> Subsquent load takes just
+                                                800 milliseconds<br/> This is possible because of Service Workers!
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#techStackId">
+                                        <div class="panel-heading pnl">
+                                            <h4 class="panel-title">
+                                                TECHNOLOGY STACK
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="techStackId" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <b>
+                                                 WHAT IS THE TECHNOLOGY STACK & WHAT ARE THE TOOLS USED
+                                            </b>
+                                            <p>
+                                                The app is built on Firebase.<br/> Front End:
+                                                <ul style="list-style-type:none">
+                                                    <li>HTML</li>
+                                                    <li>CSS</li>
+                                                    <li>JS</li>
+                                                </ul>
+                                                Lamda Funtions:
+                                                <ul style="list-style-type:none">
+                                                    <li>Node.js</li>
+                                                </ul>
+
+                                                Database:
+                                                <ul style="list-style-type:none">
+                                                    <li>JSON Blob (NOSQL)</li>
+                                                </ul>
+
+                                                Continuous Integration:
+                                                <ul style="list-style-type:none">
+                                                    <li>Travis CI</li>
+                                                </ul>
+
+                                                UI Automation:
+                                                <ul style="list-style-type:none">
+                                                    <li>NightwatchJS</li>
+                                                </ul>
+
+                                                Google Map API's<br/> NPM Modules:
+                                                <ul style="list-style-type:none">
+                                                    <li>PurifyCSS: To remove unused CSS</li>
+                                                    <li>nodemailer: To send verification Token emails</li>
+                                                    <li> cors: middleware to enable CORS handling requests</li>
+                                                    <li> secure-compare:Constant-time comparison algorithm to prevent timing attacks
+                                                        for Node.js</li>
+                                                </ul>
+
+                                                Performance Testing:
+                                                <ul style="list-style-type:none">
+                                                    <li>Lighthouse</li>
+                                                    <li>Page Speed Insights</li>
+                                                    <li>webpagetest.org</li>
+                                                </ul>
+
+
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                                 WHY FIREBASE, WHY NOT AZURE,AWS OR A MARKET STANDARD PLATFORM
+                                            </b>
+                                            <p>
+                                                Firebase is the Best! Need to know more ?! Mail to Admin
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                                 WHY A WEBSITE, WHY NOT A NATIVE APP
+                                            </b>
+                                            <p>
+                                                Browsers are very powerful these days, whatever native apps do, browsers can do it better and faster. You need native apps
+                                                if need is everyday,<br/>                                                Quick check How many apps do you use regularly and how many are just sitting
+                                                there on the phone?
+                                                <br/>Trust me you dont need native app Have a look at progressive web apps.
+                                                <br/>Native apps requires a different skill set which we dont have
+
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                                 HOW CAN YOU SAY, NATIVE APP IS NOT REQUIRED
+                                            </b>
+                                            <p>
+                                                From user perspective:Native App
+                                                <ul style="list-style-type:none">
+                                                    <li>You go to playstore</li>
+                                                    <li>Search for the app</li>
+                                                    <li>Install the app (which will be more than 5mb)</li>
+                                                    <li>Then use the app</li>
+                                                    <li>The app consumes sufficient memory and battery</li>
+                                                    <li>The old version just sits on the phone</li>
+                                                </ul>
+
+                                                Progressive web app:
+                                                <ul style="list-style-type:none">
+                                                    <li>You visit the URL</li>
+                                                    <li>Start using the App</li>
+                                                    <li>Add to HomeScreen if you need quick access!</li>
+
+                                                </ul>
+
+
+                                            </p>
+                                            <br/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#feedbackId">
+                                        <div class="panel-heading pnl">
+                                            <h4 class="panel-title">
+                                                FEEDBACK
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="feedbackId" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <b>
+                                                 THIS IS REALLY COOL STUFF, I WANT THANK YOU GUYS, WHOM SHOULD I CONTACT
+                                            </b>
+                                            <p>
+                                                We just accept bitcoins and currency in INR,For further details Mail to Admin
+
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                                 THIS APP IS STUPID, I DONT WANT USE IT, I DEMAND A BETTER APP
+                                            </b>
+                                            <p>
+                                                You are always free to develop the app and showcase, incase if its better we will replace our app with yours
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 I HAVE FOUND FEW BUGS IN THE APP, HOW CAN I REPORT IT? DO YOU GUYS RUN A BUG BOUNTY PROGRAMME?
+                                            </b>
+                                            <p>
+                                                We can always buy you a coffee from the Energy Hub, Mail the bug details to Admin
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 I HAVE A COOL IDEA, CAN YOU GUYS HELP ME IMPLEMENT
+                                            </b>
+                                            <p>
+                                                Yes, but not for Free! Mail the details to Admin
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#othersId">
+                                        <div class="panel-heading pnl">
+                                            <h4 class="panel-title">
+                                                OTHERS
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="othersId" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <b>
+                                                 I HAVE A BETTER SOLUTION,HOW CAN I CONTRIBUTE/HELP
+                                            </b>
+                                            <p>
+                                                Please contact Facilities Team Or Admin
+
+                                            </p>
+                                            <br/>
+
+                                            <b>
+                                                 I WANT TO KNOW MORE HOW THIS APP WAS BUILT, IS THERE ANY DOCUMENTATION
+                                            </b>
+                                            <p>
+                                                Documentation is for sissies! <br/> Drop a mail to Admin, we would be more
+                                                than happy to help
+                                            </p>
+                                            <br/>
+                                            <b>
+                                                 I HAVE OTHER QUESTIONS
+                                            </b>
+                                            <p>
+                                                Mail to Admin
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                        <div class="panel-heading pnl">
+                                            <h4 class="panel-title">
+                                                DEVELOPED BY
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="col-sm-12">
+
+                                                <div class="col-sm-3 center ">
+                                                    <img class="img-circle imga" src="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100%" />
+                                                    <div class="persDetails">Aashish</div>
+                                                </div>
+                                                <div class="col-sm-1">
+
+                                                </div>
+                                                <div class="col-sm-3 center ">
+                                                    <img class="img-circle imga" src="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100%" />
+                                                    <div class="persDetails">Pavan</div>
+                                                </div>
+                                                <div class="col-sm-1">
+
+                                                </div>
+                                                <div class="col-sm-3 center ">
+                                                    <img class="img-circle imga" src="https://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100%" />
+                                                    <div class="persDetails"> Rohan </div>
+                                                </div>
+                                                <div class="col-sm-1">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalTC" role="dialog">
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4> Terms and Conditions</h4>
+                </div>
+
+                <div class="modal-body col-sm-12 modal-body-upcoming">
+                    This app is for Alpha testing, Neither The app nor the Developers are not responsible in any fashion.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: fixed;z-index: -99;width: 100%;height: 100%;background: url('/icons/WW89650_low.jpeg') no-repeat center center fixed;background-size: cover;">
+
+
+    </div>
+
+
+    <div style="position: fixed; z-index: -98;width:100%;height:100%;background-color:rgb(29, 29, 29);opacity:0.78"></div>
+
+
+    <div class="col-md-4"></div>
+    <div class="col-md-4 outerdiv">
+        <div class="choice col-md-12">
+            <div class="bbottom2" id="lgDiv">
+                <label class="curp selectedd " id="lg"> W E L C O M E </label>
+
+            </div>
+
+        </div>
+        <div>
+            <div class="col-md-12 logindivdetail" id="lgn">
+                <div class="col-md-12 nopd italic"> The little things we do everyday make the biggest difference.
+
+                </div>
+                <div class="form-group col-md-12 nopd pdtop15 ">
+                    <button class="form-control btn btn-shell-df" onclick="login();" disabled>                            
+                            <span>  </span>
+                            <span id="signInAnimate" class="glyphicon glyphicon-repeat glyphicon-refresh-animate"></span>
+                    </button>
+
+
+
+                </div>
+
+                <div data-target="#myModalTC" data-toggle="modal" href="#" class="form-group col-md-12 nopd termsAndConditions">
+                    By Signing in you Agree to the Terms and conditions
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</body>
+
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+
+<script src="/firebasejs/firebaseapp.js"></script>
+<script>
+    var config = {
+        apiKey: "AIzaSyA9BvgAK00Af1lXWBiXbjQ1afKrm0oV3Cg",
+        authDomain: "the-ride-share.firebaseapp.com",
+        databaseURL: "https://the-ride-share.firebaseio.com",
+        projectId: "the-ride-share",
+        storageBucket: "the-ride-share.appspot.com",
+        messagingSenderId: "4721624756"
+    };
+    firebase.initializeApp(config);
+
+    //disable closing of modal on verify email and token
+    $('#myModalVerifyUser').on('hide.bs.modal', function (e) {
+
+        e.preventDefault();
+
+    });
+    $('#myModalVerifyToken').on('hide.bs.modal', function (e) {
+
+        e.preventDefault();
+
+    });
+
+</script>
+
+<script src="app.js"></script>
+
+</html>

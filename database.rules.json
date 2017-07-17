@@ -1,0 +1,93 @@
+{
+    "rules": {
+        "userTokens": {
+            "$uid": {
+                /* this should be only cloud functions */
+                ".write": "auth != null",
+                "token": {
+                    ".read": "auth.uid == 'some-uid'",
+                    ".validate": "auth.uid == 'some-uid'"
+                },
+                "$other": {
+                    ".read": false,
+                    ".write": false
+                }
+            }
+        },
+        "users": {
+            "$uid": {
+                ".read": "$uid == auth.uid || root.child('users').child(auth.uid).child('isVerified').val() == true",
+                ".write": "auth.uid == 'some-uid' || $uid == auth.uid || root.child('users').child(auth.uid).child('isVerified').val() == true",
+                "shellMailId": {
+                    ".validate": "$uid == auth.uid && newData.val().endsWith('@gmail.com') && !newData.val().contains('<')  && !newData.val().contains('(')"
+                },
+                "isVerified": {
+                    ".read": "auth != null",
+                    ".write": true,
+                    ".validate": "newData.isBoolean() && auth.uid != $uid"
+                },
+                "capacity": {
+                    ".validate": "$uid == auth.uid && newData.isNumber() && newData.val() < 9"
+                },
+                "car": {
+                    ".validate": "$uid == auth.uid && newData.isString() && newData.val().length < 30 && !newData.val().contains('<')  && !newData.val().contains('(')"
+                },
+                "homeLocation": {
+                    ".validate": "$uid == auth.uid && newData.isString() && newData.val().length < 50 && !newData.val().contains('<')  && !newData.val().contains('(')"
+                },
+                "remainingSeats": {
+                    //".validate": "newData.val() > -1",
+                    //".write": "$uid != auth.uid"
+                    ".validate": "auth.uid == 'some-uid'"
+                },
+                "vehicleNumber": {
+                    ".validate": "$uid == auth.uid && newData.val().length < 15 && !newData.val().contains('<')  && !newData.val().contains('(')"
+                },
+                "$other": {
+                    ".read": false,
+                    ".write": false
+                }
+            }
+        },
+        "activeRoutes": {
+            "$uid": {
+                ".read": "root.child('users').child(auth.uid).child('isVerified').val() == true",
+                ".write": "$uid == auth.uid && root.child('users').child(auth.uid).child('isVerified').val() == true"
+                
+            }
+        },
+        "userroutes": {
+            ".read": "root.child('users').child(auth.uid).child('isVerified').val() == true",
+            ".write": "root.child('users').child(auth.uid).child('isVerified').val() == true",
+            ".indexOn": "g",
+            "$uid": {
+                
+                ".validate": "$uid.beginsWith(auth.uid)",
+                ".indexOn": "g"
+            }
+        },
+        "routes": {
+            "$uid": {
+                ".read": "root.child('users').child(auth.uid).child('isVerified').val() == true",
+                ".write": "$uid == auth.uid && root.child('users').child(auth.uid).child('isVerified').val() == true",
+                ".indexOn": [
+                    "isDeleted",
+                    "isActive"
+                ]
+            }
+        },
+        "requests": {
+            ".read": "auth.uid == 'some-uid' || root.child('users').child(auth.uid).child('isVerified').val() == true",
+            ".indexOn": "requestedTo",
+            "$uid": {
+                ".read": " root.child('users').child(auth.uid).child('isVerified').val() == true",
+                ".write": "$uid == auth.uid && root.child('users').child(auth.uid).child('isVerified').val() == true",
+                ".indexOn": "requestedTo"
+            }
+        },
+        "$other": {
+            ".read": false,
+            ".write": false
+        }
+    }
+}
