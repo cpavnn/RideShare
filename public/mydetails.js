@@ -1473,8 +1473,8 @@ function handleRedirect() {
 
 
 }
-
-var homePageURL = window.location.host;
+//TODO: SET THE LOGIN PAGE URL
+var homePageURL = 'https://the-ride-share.firebaseapp.com';
 function signOut() {
     if (getCurrentUser()) {
         firebase.auth().signOut().then(function () {
