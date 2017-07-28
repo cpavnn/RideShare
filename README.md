@@ -15,6 +15,10 @@ The app is running in my company since April 2017 without spending a penny on ho
 
 Follow the below steps for installing the app, Or email I can help you in installation.
 
+#Demo
+the-ride-share.firebaseapp.com
+
+
 #Firebase and its config
 
 1. Go to https://firebase.google.com/
@@ -43,9 +47,9 @@ Follow the below steps for installing the app, Or email I can help you in instal
 9. Create one more gmail account, this will help sending the verification emails
 10. Type in credentials for newly created gmail account:firebase functions:config:set gmail.email="" gmail.password=""
 11. We need to set these things for nodemailer to send emails, other wise google will block the login
-12. remove captcha https://g.co/allowaccess
-	https://www.google.com/settings/security/lesssecureapps	
-    https://accounts.google.com/b/0/displayunlockcaptcha
+12. remove captcha https://g.co/allowaccess <br/>
+	https://www.google.com/settings/security/lesssecureapps	 <br/>
+    https://accounts.google.com/b/0/displayunlockcaptcha <br/>
 13. In requestride.js replace line no 550  with the authDomain available in in config variable.
 14. In mydetails.js replace line no 1477  with the authDomain available in in config variable.
 15. Replace "gmail.com" in  with your company domain in "database.rules.json" line 22 and line 137 in app.js and line no 131 of index.html, this makes sure your app stays private to your company.
