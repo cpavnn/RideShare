@@ -45,7 +45,7 @@ Follow the below steps for installing the app, Or email I can help you in instal
 11. We need to set these things for nodemailer to send emails, other wise google will block the login
 12. remove captcha https://g.co/allowaccess
 	https://www.google.com/settings/security/lesssecureapps	
-	https://accounts.google.com/b/0/displayunlockcaptcha
+    https://accounts.google.com/b/0/displayunlockcaptcha
 13. In requestride.js replace line no 550  with the authDomain available in in config variable.
 14. In mydetails.js replace line no 1477  with the authDomain available in in config variable.
 15. Replace "gmail.com" in  with your company domain in "database.rules.json" line 22 and line 137 in app.js and line no 131 of index.html, this makes sure your app stays private to your company.
