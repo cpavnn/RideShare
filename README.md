@@ -15,11 +15,11 @@ The app is running in my company since April 2017 without spending a penny on ho
 
 Follow the below steps for installing the app, Or email I can help you in installation.
 
-#Demo
-the-ride-share.firebaseapp.com
+##Demo
+https://the-ride-share.firebaseapp.com
 
 
-#Firebase and its config
+##Firebase and its config
 
 1. Go to https://firebase.google.com/
 2. Sign in
@@ -34,7 +34,7 @@ the-ride-share.firebaseapp.com
 
 ![](installation/init.PNG)
 
-#Installation of the app
+##Installation of the app
 
 1. Clone the repo to a seperate directory
 2. Copy all the files except .firebaserc file
