@@ -86,12 +86,10 @@ function createUserIfDoesntExist() {
     var user = getFirebaseRef().child("users").child(getCurrentUserUID());
 
     user.once('value', function (snapshot) {
-
   
         if (snapshot.val()) {
-            console.log('user exists');
+          
             if (snapshot.val().isVerified) {
-                //redirectToHomePge
                 console.log('user is verfied');
                 redirect();
 
@@ -148,7 +146,7 @@ function saveShellMailId() {
         userRef.update({
             shellMailId: shellMailId,
         }).then(function (result) {
-            console.log('mail id is is updated');
+            
             var mailIdDisplay = '<span class="mailIdDisplay"> ' + shellMailId + ' </span>';
             $(mailIdDisplay).insertAfter($("#emailIdPlaceHolder"));
             $("#myModalVerifyUser").modal().hide();
@@ -158,7 +156,7 @@ function saveShellMailId() {
             alert('Please enter correct mail id');
         });
     } else {
-        alert('please enter the Shell mail id');
+        alert('please enter the Org mail id');
     }
 
 }
@@ -197,8 +195,7 @@ function verifyTheUserToken() {
 
         var receivedToken = document.getElementById('usertoken').value;
         receivedToken = receivedToken.trim();
-        console.log('this is the received token', receivedToken);
-
+        
         var currentUser = getCurrentUserUID();
         var firebaseUserToken = firebase.auth().currentUser.getToken();
         //TODO : REPLACE THE VERIFY TOKEN CLOUD FUNTION URL
@@ -219,7 +216,7 @@ function verifyTheUserToken() {
                     'token': receivedToken,
                 })
             }).then(function (response) {
-                console.log('fetched', response.body);
+               
                 listenForIsVerified();
             }).catch(function (error) {
                 console.error('error in fetch', error);
@@ -242,7 +239,7 @@ function verifyTheUserToken() {
 
 }
 function makeAjaxCallout(methodType, endpointURI, token, body) {
-    console.log('ajax callout', methodType, endpointURI, token, body);
+    
     $.ajax({
         type: methodType,
         url: endpointURI,
@@ -269,14 +266,14 @@ function makeAjaxCallout(methodType, endpointURI, token, body) {
 
 
 function listenForIsVerified() {
-    console.log('in listen');
+   
     getFirebaseRef().child("users").child(getCurrentUserUID()).child('isVerified').once('value', function (snapshot) {
         console.log('listen snapshot', snapshot.val());
         if (snapshot.val()) {
-            console.log('========user verified=========');
+            console.log('user verified');
             redirect();
         } else {
-            console.log('========user not verified=========');
+            console.log('user not verified');
             hideSpinner(verifyTokenAnimate, 'VERIFY');
             alert('The entered the Token doesnt match !! Please Enter the correct token');
 
@@ -285,8 +282,7 @@ function listenForIsVerified() {
 }
 
 
-function redirect() {
-    console.log('in redirect');
+function redirect() {    
     var requestrideURL = '/requestride.html';
     window.location = requestrideURL;
 }

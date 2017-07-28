@@ -15,8 +15,7 @@ function loadActiveRoutePoints_js(routeN) {
 function callctr_js(t) {
     thisIsClickedButton = t;
 
-    var rtNo = t.id.substring(t.id.length - 1);
-    console.log('the id', rtNo);
+    var rtNo = t.id.substring(t.id.length - 1);    
     callctr(rtNo);
 
 }
@@ -59,7 +58,7 @@ function checkFields() {
     if (validate(leaveTo)) return;
     if (validate(leaveFrom)) return;
 
-    console.log('**', vehicleName.value, vehicleCapacity.value, vehicleNum.value, homeLocation.value, leaveTo.value, leaveFrom.value);
+    
 
     saveEmpRequest(vehicleName.value, parseInt(vehicleCapacity.value), vehicleNum.value, homeLocation.value, leaveTo.value, leaveFrom.value);
 
@@ -92,8 +91,7 @@ function closeNav() {
 
 var noOfRoutes = '0';
 
-function addExistingRoutes() {
-    console.log('noOfRoutes ', noOfRoutes);
+function addExistingRoutes() {   
     var activeRt = '0';
     for (var kk = 1; kk <= noOfRoutes; kk++) {
         var rt;
@@ -253,32 +251,24 @@ modalConfirm(function (confirmMsg) {
     }
     //ACTIVATE THE ROUTE
     {
-        if (confirmMsg == 'activate-true') {
-            console.log('yes activate', route_Id);
+        if (confirmMsg == 'activate-true') {            
             activateTheRoutes(route_Id)
-        } else if (confirmMsg == 'activate-false') {
-            console.log('dont activate', route_Id);
+        } else if (confirmMsg == 'activate-false') {            
         }
     }
     //DEACTIVATE THE ROUTE
     {
-        if (confirmMsg == 'deactivate-true') {
-            console.log('yes deactivate', route_Id);
+        if (confirmMsg == 'deactivate-true') {           
             removeTheRoutes(route_Id);
-        } else if (confirmMsg == 'deactivate-false') {
-            console.log('dont deactivate', route_Id);
+        } else if (confirmMsg == 'deactivate-false') {        
         }
     }
 });
 
 function activateTheRoutes(route_Id) {
-
-    //var confirm = window.confirm('Save and activate the Route  ?');
-    //if (confirm) 
     {
-        console.log('activate');
+        
         toggleSearch('hidden');
-
         if (route_Id.indexOf('route') > -1) {
             //New Route Activation
             getActiveRouteKeys();
@@ -336,9 +326,7 @@ function toggleSearch(opt) {
 
 /* ---------------------------------------------------------------- */
 
-function populateRouteMarkers(rtMarks) {
-
-    console.log('this is the length', rtMarks.length);
+function populateRouteMarkers(rtMarks) {    
 
     if (rtMarks.length > 0) {
         toggleSearch('hidden');
@@ -372,7 +360,7 @@ function populateRouteMarkers(rtMarks) {
 /* ---------------------------------------------------------------- */
 
 function drawRoute() {
-    console.log('in drawroute');
+    
     var t = thisIsClickedButton;
     var element;
     var clsName = ' selected ';
@@ -400,7 +388,7 @@ var directionsService;
 var stops;
 
 function drawUserRoute() {
-    console.log('in drawuserroute');
+    
     stops = stDet;
     // new up complex objects before passing them around
     directionsDisplay = new window.google.maps.DirectionsRenderer();
@@ -753,17 +741,6 @@ function gMilestone(route, dist, opts) {
 
 callctr = function (loadRoute) {
 
-    console.log('inCallCtr', loadRoute);
-    // A4J.AJAX.Submit('j_id0:j_id37', null, {
-    //     'similarityGroupingId': 'j_id0:j_id37:j_id39',
-    //     'oncomplete': function (request, event, data) {
-    //         populateRouteMarkers();
-    //     },
-    //     'parameters': {
-    //         'loadRoute': (typeof loadRoute != 'undefined' && loadRoute != null) ? loadRoute : '',
-    //         'j_id0:j_id37:j_id39': 'j_id0:j_id37:j_id39'
-    //     }
-    // })
 };
 
 
@@ -782,8 +759,7 @@ saveEmpRequest = function (veh, cap, vehnum, homeLoc, leaveTo, leaveFrom) {
         leaveOfficeAt: leaveFrom,
 
 
-    }).then(function (result) {
-        console.log('data is updated');
+    }).then(function (result) {       
         alertSaved();
     }).catch(function (error) {
         console.log('error', error);
@@ -832,7 +808,7 @@ function fr_addExistingRoutes() {
 
 
     firebaseRef.orderByChild("isDeleted").equalTo(false).once('value', function (snapshot) {
-        console.log('snapshot', snapshot.val());
+        
         if (snapshot.val() != null) {
             noOfRoutes = Object.keys(snapshot.val()).length;
 
@@ -858,8 +834,6 @@ function fr_addExistingRoutes() {
 }
 
 function fr_populateRouteMarkers(rtMarks) {
-
-    console.log('this is the length', rtMarks.length);
 
     if (rtMarks.length > 0) {
 
@@ -893,9 +867,7 @@ function fr_drawRoute() {
 }
 
 function fr_routeBtnClickHandler(theHTMLElement) {
-    console.log('htML', theHTMLElement.id);
-
-
+    
     if (theHTMLElement.id.indexOf('routeno') > -1) {
         //SAVE THE ROUTE INFO THEN STORE THE ID BACK
         //THIS SHOULD BE AFTER ACTIVATE
@@ -933,7 +905,7 @@ function fr_getTheGeoCodes(key) {
         fr_populateRouteMarkers(fr_routePointsToArray(snapshot.val().routePoints));
 
     }).then(function (sucess) {
-        console.log('sucess get the codes');
+        
     }).catch(function (error) {
         console.log('error fr_getTheGeoCodes', error);
     });
@@ -968,12 +940,11 @@ function getActiveRouteKeys() {
     //where active flag to be true
     firebaseRef.once('value', function (snapshot) {
         if (snapshot.val() !== null) {
-            console.log(snapshot.val().toString());
-
+          
             var listofKeys = snapshot.val().toString().split(',');
             removeExistingActiveKeysFromUserRoute(listofKeys);
         } else {
-            console.log('no data');
+           
             insertGeoCodesToGFire(gcodes);
 
         }
@@ -981,7 +952,7 @@ function getActiveRouteKeys() {
         firebaseRef.remove().then(function (error) {
             console.log('error in removing activeRoutes', error);
         });
-        console.log('sucess', sucess);
+        
     });
 
 }
@@ -1000,7 +971,6 @@ function removeExistingActiveKeysFromUserRoute(listofKeys) {
     geoFireRef.update(
         updates
     ).then(function (sucess) {
-        console.log('sucess');
         insertGeoCodesToGFire(gcodes);
     }).catch(function (error) {
         console.log('error', error);
@@ -1068,11 +1038,10 @@ function storeTheActiveRouteKeys(activeKeysList) {
         newfirebaseRef.update(
             activeKeysList
         ).then(function (sucess) {
-            console.log('sucess storeTheActiveRouteKeys');
-            //UPDATE THE ROUTES - UID -  
+           //UPDATE THE ROUTES - UID -  
             setActiveToFalseForRemainingRoutes();
         });
-        console.log('sucess storeTheActiveRouteKeys');
+      
     });
 
 
@@ -1114,7 +1083,7 @@ function setActiveToFalseForRemainingRoutes() {
 
 
     firebaseRef.orderByChild("isActive").equalTo(true).once('value', function (snapshot) {
-        console.log(snapshot.val());
+        
         snapshot.forEach(function (child) {
 
             firebaseRef.child(child.key).update({
@@ -1125,7 +1094,7 @@ function setActiveToFalseForRemainingRoutes() {
 
         });
     }).then(function (sucess) {
-        console.log('child read sucess ======', gcodes);
+       
         storeTheRouteAndRoutePoints(gcodes.toString());
 
 
@@ -1138,21 +1107,21 @@ function setActiveToFalseForRemainingRoutes() {
 
 /*************************** DELETE A ROUTE *******************************/
 function del_getActiveRouteKeys() {
-    console.log('del_getActiveRouteKeys called');
+   
     var firebaseRef = getFirebaseRef().child('activeRoutes').child(getCurrentUserUID());
 
     firebaseRef.once('value', function (snapshot) {
         if (snapshot.val() !== null) {
-            console.log(snapshot.val().toString());
+           
             var listofKeys = snapshot.val().toString().split(',');
             del_removeExistingActiveKeysFromUserRoute(listofKeys);
         } else {
             console.log('no data');
         }
     }).then(function (sucess) {
-        console.log('sucess del_getActiveRouteKeys');
+       
         firebaseRef.remove().then(function (sucess) {
-            console.log('sucess: activeRoutes removed ');
+           
         }).catch(function (error) {
             console.log('error in removing activeRoutes', error);
         });
@@ -1176,10 +1145,9 @@ function del_removeExistingActiveKeysFromUserRoute(listofKeys) {
     geoFireRef.update(
         updates
     ).then(function (sucess) {
-        console.log('sucess del_removeExistingActiveKeysFromUserRoute');
-
+        
     }).catch(function (error) {
-        console.log('error del_removeExistingActiveKeysFromUserRoute', error);
+        
     });
 
 
@@ -1193,7 +1161,7 @@ function del_setDeleteToTrueForTheRoute(routeToDelete) {
     var listToUpdate = {};
 
     firebaseRef.once('value', function (snapshot) {
-        console.log('===>', snapshot.val().isActive);
+       
         //if active route
         if (snapshot.val() && snapshot.val().isActive) {
             del_getActiveRouteKeys();
@@ -1203,7 +1171,7 @@ function del_setDeleteToTrueForTheRoute(routeToDelete) {
             isActive: false,
             isDeleted: true
         }).then(function (sucess) {
-            console.log('deactivate sucess');
+          
         });
     });
 
@@ -1242,7 +1210,7 @@ function up_getActiveRouteKeys() {
     //where active flag to be true
     firebaseRef.once('value', function (snapshot) {
 
-        console.log('nothing', snapshot.val());
+        
 
         var listofKeys;
         if (snapshot.val()) {
@@ -1252,7 +1220,7 @@ function up_getActiveRouteKeys() {
         up_removeExistingActiveKeysFromUserRoute(listofKeys);
 
     }).then(function (sucess) {
-        console.log('sucess', sucess);
+       
     });
 
 }
@@ -1273,7 +1241,7 @@ function up_removeExistingActiveKeysFromUserRoute(listofKeys) {
     geoFireRef.update(
         updates
     ).then(function (sucess) {
-        console.log('sucess');
+       
         up_getTheActiveGeoCodes(up_getCurrentRouteId());
     }).catch(function (error) {
         console.log('error', error);
@@ -1298,7 +1266,7 @@ function up_getTheActiveGeoCodes(key) {
         up_insertGeoCodesToGFire(snapshot.val().routePoints);
 
     }).then(function (sucess) {
-        console.log('sucess get the codes');
+      
     }).catch(function (error) {
         console.log('error fr_getTheGeoCodes', error);
     });
@@ -1335,7 +1303,7 @@ function up_insertGeoCodesToGFire(gcodes) {
     ).then(function () {
 
         up_storeTheActiveRouteKeys(activeKeysList);
-        console.log("Provided keys have been added to GeoFire");
+       
     }, function (error) {
         console.log("Error: " + error);
     });
@@ -1360,7 +1328,7 @@ function up_storeTheActiveRouteKeys(activeKeysList) {
         newfirebaseRef.update(
             activeKeysList
         ).then(function (sucess) {
-            console.log('sucess storeTheActiveRouteKeys');
+           
             //UPDATE THE ROUTES - UID -  
             up_setActiveToFalseForRemainingRoutes();
         });
@@ -1375,7 +1343,7 @@ function up_setActiveToFalseForRemainingRoutes() {
 
 
     firebaseRef.orderByChild("isActive").equalTo(true).once('value', function (snapshot) {
-        console.log(snapshot.val());
+       
         snapshot.forEach(function (child) {
 
             firebaseRef.child(child.key).update({
@@ -1440,7 +1408,7 @@ function fr_displayMyDetails() {
 
 
     }).then(function (result) {
-        console.log('data is displayed');
+       
     }).catch(function (error) {
         console.log('error', error);
     });
@@ -1475,10 +1443,10 @@ function handleRedirect() {
         if (user) {
             var firebaseRef = getFirebaseRef().child('users').child(getCurrentUserUID()).child('isVerified');
             firebaseRef.once('value').then(function (snapshot) {
-                console.log('snapshot', snapshot);
+             
                 if (snapshot.val()) {
 
-                    console.log('this is snapshot val', snapshot.val());
+                   
                     fr_addExistingRoutes();
                     fr_displayMyDetails();
 
@@ -1505,8 +1473,8 @@ function handleRedirect() {
 
 
 }
-//TODO: SET THE LOGIN PAGE URL
-var homePageURL = 'https://the-ride-share.firebaseapp.com';
+
+var homePageURL = window.location.host;
 function signOut() {
     if (getCurrentUser()) {
         firebase.auth().signOut().then(function () {
@@ -1608,9 +1576,9 @@ function isSupportedBrowserHistory() {
 
 function popStateHandler(event) {
     if (event.state != null) {
-        console.log('got event state is ', event.state);
+       
         if (event.state == 0) {
-            console.log('close the form');
+         
             closeNav();
         }
     }
@@ -1622,8 +1590,7 @@ function browserHistoryPush() {
 
 function browserHistoryinit() {
     historySupported = isSupportedBrowserHistory();
-    if (historySupported) {
-        console.log('This browser supports history');
+    if (historySupported) {        
         history.replaceState(0, 'number 0', null);
         window.onpopstate = popStateHandler;
     } else {

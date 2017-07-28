@@ -8,7 +8,7 @@ function requestConfirmation() {
 
 function requestTheUserForRide(requestToUser) {
 
-    console.log('in user request ride', requestToUser);
+   
 
 }
 
@@ -111,7 +111,7 @@ function runGeoQuery() {
     var onKeyEnteredRegistration = geoQuery.on("key_entered", function (key, location, distance) {
         keysEntered = true;
 
-        console.log(key + " entered query at " + location + " (" + distance + " km from center)");
+      
 
         var useridKey = key.split('__');
 
@@ -127,7 +127,7 @@ function runGeoQuery() {
 
                 }
             }).then(function (success) {
-                console.log('finished reading ');
+                
                 enableDropdown();
             }).catch(function (error) {
                 console.log('error reading user data: ', error);
@@ -138,11 +138,11 @@ function runGeoQuery() {
     });
 
     var onKeyExitedRegistration = geoQuery.on("key_exited", function (key, location, distance) {
-        console.log(key + " exited query to " + location + " (" + distance + " km from center)");
+       
     });
 
     var onKeyMovedRegistration = geoQuery.on("key_moved", function (key, location, distance) {
-        console.log(key + " moved within query to " + location + " (" + distance + " km from center)");
+       
     });
 
 }
@@ -186,9 +186,9 @@ function populateTable(carpooluser, carpooluserKey) {
     var HTMLCard = '<div onclick=\"prepareTheRequest(this);\" class="col-md-4 userInfoCard"  data-userkey=' + safe_tags_replace(carpooluserKey) + ' data-usermailid= ' + safe_tags_replace(carpooluser.shellMailId) + '><div class="suggestionsCard col-md-12"> <div class="mailIdInfo" > ' + safe_tags_replace(carpooluser.shellMailId) + ' </div> <div class="pd3"> <span> ' + safe_tags_replace(carpooluser.car) + ' </span> <span style="float: right;"> ' + safe_tags_replace(carpooluser.vehicleNumber) + '</span> </div> <div class="pd3"> Going to:  <span> ' + safe_tags_replace(carpooluser.homeLocation) + '</span> </div> <div class="pd3"> Leaves Home at: <span> ' + safe_tags_replace(carpooluser.leaveHomeAt) + '</span> </div><div class="pd3"> Leaves Office at: <span> ' + safe_tags_replace(carpooluser.leaveOfficeAt) + '</span> </div> <div> <button class="requestBtn"> request </button> </div> </div> </div> ';
 
 
-    console.log('creating card');
+  
     if (j$('.NoDataFound').is(":visible")) {
-        console.log('removing no data found');
+     
         j$('.NoDataFound').remove();
     }
     j$(HTMLCard).insertAfter(j$("#proximityBar"));
@@ -368,17 +368,17 @@ function requestForTheRide(requestTo) {
         var firebaseRef = getFirebaseRef().child("requests").child(getCurrentUserUID());
 
         firebaseRef.once('value').then(function (snapshot) {
-            console.log('', snapshot.val());
+           
 
             if (snapshot.val()) {
                 if (snapshot.val().requestedTo === requestTo) {
                     //REQUESTING FOR ALREADY REQUESTED PERSON
                     //PUT A SNACKBAR
                     closeNav();
-                    console.log('put a snackbar REQUESTING FOR ALREADY REQUESTED PERSON');
+                   
                     return;
                 }
-                console.log('val', snapshot.val());
+              
                 //increase number of seats the counter then call update
                 //updateRemainingSeats(snapshot.val().requestedTo, 1);
                 updateRequests(firebaseRef, requestTo);
@@ -470,7 +470,7 @@ function checkIfAlreadyRequested() {
         if (snapshot.val()) {
             var requestedToRef = getFirebaseRef().child("users").child(snapshot.val().requestedTo);
             requestedToRef.once('value').then(function (requestedToUser) {
-                console.log('this is the user', requestedToUser.val());
+             
 
                 //j$("#Rmail").attr("href","mailto:"+ requestedToUser.val().shellMailId).text(requestedToUser.val().shellMailId);
                 j$("#Rmail").attr("href", "mailto:" + requestedToUser.val().shellMailId + '?subject= New passenger request' + '&body=Hello! %0A%0AI would like to join with you for the carpool.%0A %0A Thanks!').text(requestedToUser.val().shellMailId);
@@ -517,10 +517,10 @@ function handleRedirect() {
         if (user) {
             var firebaseRef = getFirebaseRef().child('users').child(getCurrentUserUID()).child('isVerified');
             firebaseRef.once('value').then(function (snapshot) {
-                console.log('snapshot', snapshot);
+               
                 if (snapshot.val()) {
 
-                    console.log('this is snapshot val', snapshot.val());
+                   
                     initialiseGeoQuery();
                     clearuidList();
                     checkIfAlreadyRequested();
@@ -546,8 +546,8 @@ function handleRedirect() {
 
 
 }
-//TODO
-var homePageURL = 'https://the-ride-share.firebaseapp.com';
+
+var homePageURL = window.location.host;
 function signOut() {
     if (getCurrentUser()) {
         firebase.auth().signOut().then(function () {
@@ -582,7 +582,7 @@ function showSnackbar(elementID, message, timeout) {
 j$ = jQuery.noConflict();
 
 j$('.navbar-toggle').on('click', function () {
-    console.log('===', typeof j$(".exisitingRequest").css("top"));
+   
     if (j$(".exisitingRequest").css("top") != "-360px") {
         if (j$('.navbar-toggle').attr("aria-expanded") == "true")
             j$(".exisitingRequest").css("top", "60px");
@@ -604,9 +604,9 @@ function isSupportedBrowserHistory() {
 
 function popStateHandler(event) {
     if (event.state != null) {
-        console.log('got event state is ', event.state);
+       
         if (event.state == 0) {
-            console.log('close the form');
+          
             closeNav();
         }
     }
@@ -619,7 +619,7 @@ function browserHistoryPush(){
 function browserHistoryinit() {
     historySupported = isSupportedBrowserHistory();
     if (historySupported) {
-        console.log('This browser supports history');
+     
         history.replaceState(0, 'number 0', null);
         window.onpopstate = popStateHandler;
     } else {
