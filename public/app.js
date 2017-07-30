@@ -199,7 +199,7 @@ function verifyTheUserToken() {
         var currentUser = getCurrentUserUID();
         var firebaseUserToken = firebase.auth().currentUser.getToken();
         //TODO : REPLACE THE VERIFY TOKEN CLOUD FUNTION URL
-        var verifyTokenURL = 'https://us-central1-the-ride-share.cloudfunctions.net/verifyToken';
+        var verifyTokenURL = 'https://us-central1-' + firebase.app().options.authDomain.split('.')[0] + '.cloudfunctions.net/verifyToken/';
         var fbToken = firebaseUserToken;
         firebase.auth().currentUser.getToken(/* forceRefresh */ true).then(function (firebaseUserToken) {
           
