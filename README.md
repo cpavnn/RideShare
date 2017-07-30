@@ -40,22 +40,31 @@ https://the-ride-share.firebaseapp.com
 2. Copy all the files except .firebaserc file
 3. Copy and replace all the existing files
 4. Go back to firebase project page and click "Add Firebase to your web app"
-5. Copy just the config variable, DO NOT COPY firebase.js script
-6. Replace line # 730 to 738 in index.html
-7. Replace line # 846 to 853 in mydetails.html
-8. Replace line # 673 to 680 in requestride.html
-9. Create one more gmail account, this will help sending the verification emails
-10. Type in credentials for newly created gmail account:firebase functions:config:set gmail.email="" gmail.password=""
-11. We need to set these things for nodemailer to send emails, other wise google will block the login
-12. remove captcha https://g.co/allowaccess <br/>
+5. Replace the contents firebaseConfig.js with your app cofig
+```
+var config = {
+    apiKey: "AIzaSyA9BvgAK00Af1lXWBiXbjQ1afKrm0oV3Cg",
+    authDomain: "the-ride-share.firebaseapp.com",
+    databaseURL: "https://the-ride-share.firebaseio.com",
+    projectId: "the-ride-share",
+    storageBucket: "the-ride-share.appspot.com",
+    messagingSenderId: "4721624756"
+};
+firebase.initializeApp(config);
+
+```
+6. Create one more gmail account, this will help sending the verification emails
+7. Type in credentials for newly created gmail account:firebase functions:config:set gmail.email="" gmail.password=""
+8. We need to set these things for nodemailer to send emails, other wise google will block the login
+9. Remove captcha https://g.co/allowaccess <br/>
 	https://www.google.com/settings/security/lesssecureapps	 <br/>
     https://accounts.google.com/b/0/displayunlockcaptcha <br/>
-13. In requestride.js replace line no 550  with the authDomain available in in config variable.
-14. In mydetails.js replace line no 1477  with the authDomain available in in config variable.
-15. Replace "gmail.com" in  with your company domain in "database.rules.json" line 22 and line 137 in app.js and line no 131 of index.html, this makes sure your app stays private to your company.
-16. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
-17. In command line type "firebase deploy" and hit enter
-18. After successful deploy, copy the hosting url and open in browser
+10. In requestride.js replace line no 550  with the authDomain available in in config variable.
+11. In mydetails.js replace line no 1477  with the authDomain available in in config variable.
+12. Replace "gmail.com" in  with your company domain in "database.rules.json" line 22 and line 137 in app.js and line no 131 of index.html, this makes sure your app stays private to your company.
+13. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
+14. In command line type "firebase deploy" and hit enter
+15. After successful deploy, copy the hosting url and open in browser
 
 
 Now you have private carpool app for you company
