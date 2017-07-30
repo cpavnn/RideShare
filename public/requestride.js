@@ -547,7 +547,7 @@ function handleRedirect() {
 
 }
 //TODO
-var homePageURL = 'https://the-ride-share.firebaseapp.com';
+var homePageURL = 'https://'+window.location.host;
 function signOut() {
     if (getCurrentUser()) {
         firebase.auth().signOut().then(function () {

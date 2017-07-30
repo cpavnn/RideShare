@@ -1474,7 +1474,7 @@ function handleRedirect() {
 
 }
 //TODO: SET THE LOGIN PAGE URL
-var homePageURL = 'https://the-ride-share.firebaseapp.com';
+var homePageURL = 'https://'+window.location.host;
 function signOut() {
     if (getCurrentUser()) {
         firebase.auth().signOut().then(function () {
