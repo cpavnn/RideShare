@@ -1,24 +1,7 @@
 
 var thisIsClickedButton;
 
-function loadActiveRoutePoints_js(routeN) {
-    setTimeout(function () {
-        var idd = 'routeno' + routeN
-        callctr_js(document.getElementById(idd));
 
-    }, 1200);
-
-
-
-}
-
-function callctr_js(t) {
-    thisIsClickedButton = t;
-
-    var rtNo = t.id.substring(t.id.length - 1);    
-    callctr(rtNo);
-
-}
 /* ---------------------------------------------------------------- */
 function alertSaved() {
     //alert('Saved');
@@ -949,8 +932,8 @@ function getActiveRouteKeys() {
 
         }
     }).then(function (sucess) {
-        firebaseRef.remove().then(function (error) {
-            console.log('error in removing activeRoutes', error);
+        firebaseRef.remove().then(function (msg) {
+            //console.log('error in removing activeRoutes', error);
         });
         
     });
