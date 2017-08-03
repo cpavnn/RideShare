@@ -70,7 +70,7 @@ firebase.initializeApp(config);
 11. cd to functions directory and do type ``` npm install ```, this will install necessary npm modules
 12. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
 13. In command line type "firebase deploy" and hit enter
-13. After successful deploy, copy the hosting url and open in browser
+14. After successful deploy, copy the hosting url and open in browser
 
 
 Now you have private carpool app for you company
