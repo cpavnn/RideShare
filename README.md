@@ -55,7 +55,8 @@ firebase.initializeApp(config);
 
 ```
 6. Create one more gmail account, this will help sending the verification emails
-7. Type in credentials for newly created gmail account:firebase functions:config:set gmail.email="" gmail.password=""
+7. Type in credentials for newly created gmail account<br/>
+``` firebase functions:config:set gmail.email="" gmail.password="" ```
 8. We need to set these things for nodemailer to send emails, other wise google will block the login
 9. Remove captcha https://g.co/allowaccess <br/>
 	https://www.google.com/settings/security/lesssecureapps	 <br/>
@@ -66,8 +67,9 @@ firebase.initializeApp(config);
     line 137 in app.js <br/>
     line no 131 of index.html,<br/>
     this makes sure your app stays private to your company.
-11. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
-12. In command line type "firebase deploy" and hit enter
+11. cd to functions directory and do type ``` npm install ```, this will install necessary npm modules
+12. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
+13. In command line type "firebase deploy" and hit enter
 13. After successful deploy, copy the hosting url and open in browser
 
 
