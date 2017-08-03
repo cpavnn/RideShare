@@ -75,3 +75,14 @@ firebase.initializeApp(config);
 
 Now you have private carpool app for you company
 For any question and clarification please email me.
+
+# To be updated
+# App design 
+
+This app doesnt perform well with if the company size > 1000 people, as search is not optimised.
+
+# Database structure
+
+![](installation/dbstructure.PNG)
+
+

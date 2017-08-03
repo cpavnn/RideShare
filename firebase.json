@@ -4,5 +4,8 @@
   },
   "hosting": {
     "public": "public"
-  }
+  },
+   "ignore": [
+      "/installation/**"
+   ]
 }
