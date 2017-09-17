@@ -1,4 +1,4 @@
-const version = 'rideshare0.4';
+const version = 'rideshare0.5';
 
 self.addEventListener('install', function (event) {
     self.skipWaiting();
@@ -7,20 +7,22 @@ self.addEventListener('install', function (event) {
             .then(function (cache) {
                 return cache.addAll([
                     
-                    '/index.html',
-                    '/app.js',
-                    '/firebasejs/firebaseapp.js',                    
-                    '/bootstrap.min.js',                               
+                    'icons/aashish.jpg',
+                    'icons/rohan.jpg',
+                    'icons/pavan.jpg',
+                    'icons/WW89650_low.jpg',
+                     '/app.js',
+                    '/firebasejs/firebaseapp.js',
+                    '/bootstrap.min.js',
                     '/hopscotch.min.js',
                     '/jquery.min.js',
-                    '/mydetails.html',
-                    '/mydetails.js',
-                    '/requestride.html',
-                    '/requestride.js',
+                    // '/mydetails.html',
+                    // '/mydetails.js',
+                    // '/requestride.html',
+                    // '/requestride.js',
                     '/fonts/glyphicons-halflings-regular.ttf',
                     '/fonts/glyphicons-halflings-regular.woff',
-                    '/fonts/glyphicons-halflings-regular.woff2',
-                    '/icons/WW89650_low.jpeg'
+                    '/fonts/glyphicons-halflings-regular.woff2'
 
 
                 ]);

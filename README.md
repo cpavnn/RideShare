@@ -67,10 +67,11 @@ firebase.initializeApp(config);
     line 137 in app.js <br/>
     line no 131 of index.html,<br/>
     this makes sure your app stays private to your company.
-11. cd to functions directory and do type ``` npm install ```, this will install necessary npm modules
-12. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
-13. In command line type "firebase deploy" and hit enter
-14. After successful deploy, copy the hosting url and open in browser
+11. Set your city's geocode at line 386 and office geocode 568 in ``` mydetails.js ```
+12. cd to functions directory and do type ``` npm install ```, this will install necessary npm modules
+13. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
+14. In command line type "firebase deploy" and hit enter
+15. After successful deploy, copy the hosting url and open in browser
 
 
 Now you have private carpool app for you company
@@ -78,8 +79,6 @@ For any question and clarification please email me.
 
 # To be updated
 # App design 
-
-This app doesnt perform well with if the company size > 1000 people, as search is not optimised.
 
 # Database structure
 
