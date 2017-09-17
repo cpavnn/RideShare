@@ -67,7 +67,7 @@ firebase.initializeApp(config);
     line 137 in app.js <br/>
     line no 131 of index.html,<br/>
     this makes sure your app stays private to your company.
-11. Set your city's geocode at line 386 and office geocode 568 in ``` mydetails.js ```
+11. Set your city's geocode at line 386 and office geocode at line 568 in ``` mydetails.js ```
 12. cd to functions directory and do type ``` npm install ```, this will install necessary npm modules
 13. Add API keys for google maps, Visit for further instruction https://developers.google.com/maps/documentation/javascript/
 14. In command line type "firebase deploy" and hit enter
