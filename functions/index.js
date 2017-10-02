@@ -160,8 +160,12 @@ exports.removeActiveRequests = functions.https.onRequest((req, res) => {
     return ref.update(listToUpdate);
   }).then(function (success) {
     console.log('success', success);
+    //Add logic to move active requests to past requests, may for analytics    
+    return firebaseRef.remove()    
+  }).then(function(sucess) {
+    console.log('active requests deleted', success);
     res.status(200).send('All requests are deleted');
-  }).catch(function (error) {
+  }).fcatch(function (error) {
     console.log('error:nightlyJob:', error);
     res.status(400).send('error', error);
   });

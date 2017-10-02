@@ -1,17 +1,3 @@
-function logout_js() {
-
-}
-
-function requestConfirmation() {
-    alert('Requested, Please make sure you contact the driver and plan accordingly!');
-}
-
-function requestTheUserForRide(requestToUser) {
-
-   
-
-}
-
 var searchCoords;
 
 var opened = 0;
@@ -37,10 +23,7 @@ function suggest(proximity) {
 
         listObj = [];
         //OPEN THE NAV BAR
-        openNav();
-
-        //SHOW SPINNER
-
+       openNav();
 
         var coordinates = coordArr[0].toString().split(',');
 
@@ -56,7 +39,7 @@ function suggest(proximity) {
 
     } else {
         //alert('Choose a point on the map and click search');
-        showSnackbar('chooseAPoint','Choose a point on the map and click search',3000);
+        showSnackbar('chooseAPoint', 'Choose a point on the map and click search', 3000);
     }
 }
 
@@ -75,11 +58,10 @@ function initialiseGeoQuery() {
 }
 
 var uidList;
+
 function clearuidList() {
     uidList = [];
 }
-
-
 
 var geoQuery;
 var keysEntered = false;
@@ -111,7 +93,7 @@ function runGeoQuery() {
     var onKeyEnteredRegistration = geoQuery.on("key_entered", function (key, location, distance) {
         keysEntered = true;
 
-      
+
 
         var useridKey = key.split('__');
 
@@ -127,7 +109,7 @@ function runGeoQuery() {
 
                 }
             }).then(function (success) {
-                
+
                 enableDropdown();
             }).catch(function (error) {
                 console.log('error reading user data: ', error);
@@ -138,26 +120,16 @@ function runGeoQuery() {
     });
 
     var onKeyExitedRegistration = geoQuery.on("key_exited", function (key, location, distance) {
-       
+        //TO BE IMPLEMENTED FOR REAL TIME GEOLOCATION
     });
 
     var onKeyMovedRegistration = geoQuery.on("key_moved", function (key, location, distance) {
-       
+
     });
 
 }
 
 /* -------------------------------------------------------------- */
-function disableDropdown() {
-    // var proximitySelectList = document.getElementById('proximityList');
-    // var att = document.createAttribute("disabled");
-    // att.value = "";
-    // proximitySelectList.setAttributeNode(att);
-}
-
-function enableDropdown() {
-    // document.getElementById('proximityList').removeAttribute("disabled");
-}
 
 function removeCurrentSuggestions() {
     j$('.userInfoCard').remove();
@@ -181,14 +153,12 @@ function safe_tags_replace(str) {
 
 /* -------------------------------------------------------------- */
 function populateTable(carpooluser, carpooluserKey) {
-
-    //var HTMLCard = '<div onclick=\"prepareTheRequest(this);\" class="col-md-4 userInfoCard"  data-userkey=' + carpooluserKey + ' data-usermailid= ' + carpooluser.shellMailId + '><div class="suggestionsCard col-md-12"> <div class="mailIdInfo" > ' + carpooluser.shellMailId + ' </div> <div class="pd3"> <span> ' + carpooluser.car + ' </span> <span style="float: right;"> ' + carpooluser.vehicleNumber + '</span> </div> <div class="pd3"> Going to:  <span> ' + carpooluser.homeLocation + '</span> </div> <div class="pd3"> Leaves Home at: <span> ' + carpooluser.leaveHomeAt + '</span> </div><div class="pd3"> Leaves Office at: <span> ' + carpooluser.leaveOfficeAt + '</span> </div> <div> <button class="requestBtn"> request </button> </div> </div> </div> ';
+    
     var HTMLCard = '<div onclick=\"prepareTheRequest(this);\" class="col-md-4 userInfoCard"  data-userkey=' + safe_tags_replace(carpooluserKey) + ' data-usermailid= ' + safe_tags_replace(carpooluser.shellMailId) + '><div class="suggestionsCard col-md-12"> <div class="mailIdInfo" > ' + safe_tags_replace(carpooluser.shellMailId) + ' </div> <div class="pd3"> <span> ' + safe_tags_replace(carpooluser.car) + ' </span> <span style="float: right;"> ' + safe_tags_replace(carpooluser.vehicleNumber) + '</span> </div> <div class="pd3"> Going to:  <span> ' + safe_tags_replace(carpooluser.homeLocation) + '</span> </div> <div class="pd3"> Leaves Home at: <span> ' + safe_tags_replace(carpooluser.leaveHomeAt) + '</span> </div><div class="pd3"> Leaves Office at: <span> ' + safe_tags_replace(carpooluser.leaveOfficeAt) + '</span> </div> <div> <button class="requestBtn"> request </button> </div> </div> </div> ';
 
 
-  
     if (j$('.NoDataFound').is(":visible")) {
-     
+
         j$('.NoDataFound').remove();
     }
     j$(HTMLCard).insertAfter(j$("#proximityBar"));
@@ -200,14 +170,14 @@ function populateTable(carpooluser, carpooluserKey) {
 
 function openNav() {
     browserHistoryPush();
-    document.getElementById("mySidenav").style.width = "100%";
+    document.getElementById("mySidenav").style.transform = "translate3d(0,0,0)";
 }
 
 
 /* ---------------------------------------------------------------- */
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.transform = "translate3d(-100%,0,0)";
 }
 
 /* ---------------------------------------------------------------- */
@@ -227,16 +197,6 @@ function setSearchCoords(cord) {
 
 /* ---------------------------------------------------------------- */
 
-
-/* ---------------------------------------------------------------- */
-
-function removeTheRoute(cord) {
-
-
-
-}
-
-/* ---------------------------------------------------------------- */
 
 function addTheRoute(addr, cord) {
     coordArr = [];
@@ -265,6 +225,7 @@ function setMapOnAll(map) {
 }
 
 /* ---------------------------------------------------------------- */
+//TODO - SET CITY COORDINIATES
 const city = {};
 city.lat = 12.9681417;
 city.lng = 77.6119801;
@@ -315,9 +276,7 @@ function placeMarker(location) {
         var coords = '' + marker.position.lat() + ',' + marker.position.lng();
         var index = coordArr.indexOf(coords);
         coordArr.splice(index, 1);
-
-
-        removeTheRoute(marker.position);
+      
         marker.setMap(null);
         google.maps.event.clearInstanceListeners(marker);
     });
@@ -368,17 +327,17 @@ function requestForTheRide(requestTo) {
         var firebaseRef = getFirebaseRef().child("requests").child(getCurrentUserUID());
 
         firebaseRef.once('value').then(function (snapshot) {
-           
+
 
             if (snapshot.val()) {
                 if (snapshot.val().requestedTo === requestTo) {
                     //REQUESTING FOR ALREADY REQUESTED PERSON
                     //PUT A SNACKBAR
                     closeNav();
-                   
+
                     return;
                 }
-              
+
                 //increase number of seats the counter then call update
                 //updateRemainingSeats(snapshot.val().requestedTo, 1);
                 updateRequests(firebaseRef, requestTo);
@@ -470,9 +429,7 @@ function checkIfAlreadyRequested() {
         if (snapshot.val()) {
             var requestedToRef = getFirebaseRef().child("users").child(snapshot.val().requestedTo);
             requestedToRef.once('value').then(function (requestedToUser) {
-             
-
-                //j$("#Rmail").attr("href","mailto:"+ requestedToUser.val().shellMailId).text(requestedToUser.val().shellMailId);
+               
                 j$("#Rmail").attr("href", "mailto:" + requestedToUser.val().shellMailId + '?subject= New passenger request' + '&body=Hello! %0A%0AI would like to join with you for the carpool.%0A %0A Thanks!').text(requestedToUser.val().shellMailId);
                 j$("#Rcar").text(requestedToUser.val().car);
                 j$("#Rnum").text("Number: "+requestedToUser.val().vehicleNumber);
@@ -517,10 +474,10 @@ function handleRedirect() {
         if (user) {
             var firebaseRef = getFirebaseRef().child('users').child(getCurrentUserUID()).child('isVerified');
             firebaseRef.once('value').then(function (snapshot) {
-               
+
                 if (snapshot.val()) {
 
-                   
+
                     initialiseGeoQuery();
                     clearuidList();
                     checkIfAlreadyRequested();
@@ -547,7 +504,7 @@ function handleRedirect() {
 
 }
 //TODO
-var homePageURL = 'https://'+window.location.host;
+var homePageURL = 'https://' + window.location.host;
 function signOut() {
     if (getCurrentUser()) {
         firebase.auth().signOut().then(function () {
@@ -582,7 +539,7 @@ function showSnackbar(elementID, message, timeout) {
 j$ = jQuery.noConflict();
 
 j$('.navbar-toggle').on('click', function () {
-   
+
     if (j$(".exisitingRequest").css("top") != "-360px") {
         if (j$('.navbar-toggle').attr("aria-expanded") == "true")
             j$(".exisitingRequest").css("top", "60px");
@@ -604,22 +561,22 @@ function isSupportedBrowserHistory() {
 
 function popStateHandler(event) {
     if (event.state != null) {
-       
+
         if (event.state == 0) {
-          
+
             closeNav();
         }
     }
 }
 
-function browserHistoryPush(){
+function browserHistoryPush() {
     history.pushState(1, 'detailsOpened', 'requestride.html#open');
 }
 
 function browserHistoryinit() {
     historySupported = isSupportedBrowserHistory();
     if (historySupported) {
-     
+
         history.replaceState(0, 'number 0', null);
         window.onpopstate = popStateHandler;
     } else {

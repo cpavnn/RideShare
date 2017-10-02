@@ -77,6 +77,30 @@ firebase.initializeApp(config);
 Now you have private carpool app for you company
 For any question and clarification please email me.
 
+# Day to day operations
+* Delete the existing requests on a nightly basis
+    - Why? Whenever a person requests for a ride, the app reduces the capacity of car of the person who is offering ride
+    - We cannot track the completion of the ride currently, hence we cannot reset the capacity after the ride completion, hence every night we need to reset the capacity
+
+## Set up a cron job to trigger the http endpoint
+* The `http` method is in `functions` folder in `index.js` i.e. `removeActiveRequests`
+* We create and set a key to securely trigger this, 
+```
+npm install -g crypto
+node -e "console.log(require('crypto').randomBytes(20).toString('hex'))"
+
+firebase functions:config:set cron.key="<GENERATED_KEY>"
+firebase functions:config:get cron.key
+```
+* The url will be
+ ```
+ https://us-central1-<PROJECT-ID>.cloudfunctions.net/removeActiveRequests?key=<YOUR_KEY>
+ ```
+* we will use <https://cron-job.org/en/> to set up the nightly trigger, because its 
+free
+* Open and sign up for `cron-job.org`, put the above url, and set to frequency to everyday 23.30 Hrs
+
+# Developer docs
 # To be updated
 # App design 
 

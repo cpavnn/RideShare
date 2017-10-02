@@ -53,6 +53,6 @@
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/",
+  "start_url": "/index.html",
   "splash_pages": null
 }
