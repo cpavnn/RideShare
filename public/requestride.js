@@ -108,10 +108,7 @@ function runGeoQuery() {
                         populateTable(snapshot.val(), snapshot.key);
 
                 }
-            }).then(function (success) {
-
-                enableDropdown();
-            }).catch(function (error) {
+            }).then().catch(function (error) {
                 console.log('error reading user data: ', error);
             });
 
