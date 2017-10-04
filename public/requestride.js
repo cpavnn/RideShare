@@ -110,7 +110,6 @@ function runGeoQuery() {
                 }
             }).then(function (success) {
 
-                enableDropdown();
             }).catch(function (error) {
                 console.log('error reading user data: ', error);
             });
