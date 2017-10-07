@@ -1,4 +1,4 @@
-const version = 'Ridesharev0.4';
+const version = 'Ridesharev0.6';
 
 self.addEventListener('install', function (event) {
     self.skipWaiting();
@@ -11,6 +11,7 @@ self.addEventListener('install', function (event) {
                     'icons/rohan.jpg',
                     'icons/pavan.jpg',
                     'icons/WW89650_low.jpeg',
+                    'icons/github.png',
                      '/app.js',
                     '/firebasejs/firebaseapp.js',
                     '/bootstrap.min.js',
