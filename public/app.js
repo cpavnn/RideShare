@@ -282,18 +282,21 @@ function redirect() {
     window.location = requestrideURL;
 }
 
-function lazyLoadImages() {
+function lazyLoadImages(AboutElement) {
     var lazy = document.getElementsByClassName('lazy');
     
     for(var i=0; i<lazy.length; i++){
      lazy[i].src = lazy[i].getAttribute('data-src');
     }
 
-    document.getElementById("About").removeEventListener("click", lazyLoadImages);
+    AboutElement.removeEventListener("click", lazyLoadImages);
+    AboutElement.removeEventListener("click", lazyLoadImages);
 
 }
 
 window.onload = function () {
     handleRedirect();
-    document.getElementById("About").addEventListener("click", lazyLoadImages);
+    var AboutElement = document.getElementById("About");
+    AboutElement.addEventListener("click", lazyLoadImages(AboutElement));
+    AboutElement.addEventListener("touchstart", lazyLoadImages(AboutElement));
 };
