@@ -77,20 +77,20 @@ function createUser() {
 
 
 function createUserIfDoesntExist() {
-  
+
     var user = getFirebaseRef().child("users").child(getCurrentUserUID());
 
     user.once('value', function (snapshot) {
-  
+
         if (snapshot.val()) {
-          
+
             if (snapshot.val().isVerified) {
                 console.log('user is verfied');
                 redirect();
 
             } else {
                 $("#myModalVerifyUser").modal();
-               
+
             }
         }
         else {
@@ -98,7 +98,7 @@ function createUserIfDoesntExist() {
 
         }
     }).then(function (success) {
-        
+
     }).catch(function (error) {
         console.log('Error isVerified read ', error);
         hideSpinner(signInAnimate, signInWithGoogle);
@@ -141,7 +141,7 @@ function saveShellMailId() {
         userRef.update({
             shellMailId: shellMailId,
         }).then(function (result) {
-            
+
             var mailIdDisplay = '<span class="mailIdDisplay"> ' + shellMailId + ' </span>';
             $(mailIdDisplay).insertAfter($("#emailIdPlaceHolder"));
             $("#myModalVerifyUser").modal().hide();
@@ -190,14 +190,14 @@ function verifyTheUserToken() {
 
         var receivedToken = document.getElementById('usertoken').value;
         receivedToken = receivedToken.trim();
-        
+
         var currentUser = getCurrentUserUID();
         var firebaseUserToken = firebase.auth().currentUser.getToken();
         //TODO : REPLACE THE VERIFY TOKEN CLOUD FUNTION URL
         var verifyTokenURL = 'https://us-central1-' + firebase.app().options.authDomain.split('.')[0] + '.cloudfunctions.net/verifyToken/';
         var fbToken = firebaseUserToken;
         firebase.auth().currentUser.getToken(/* forceRefresh */ true).then(function (firebaseUserToken) {
-          
+
             fbToken = firebaseUserToken;
 
             fetch(verifyTokenURL, {
@@ -211,7 +211,7 @@ function verifyTheUserToken() {
                     'token': receivedToken,
                 })
             }).then(function (response) {
-               
+
                 listenForIsVerified();
             }).catch(function (error) {
                 console.error('error in fetch', error);
@@ -234,7 +234,7 @@ function verifyTheUserToken() {
 
 }
 function makeAjaxCallout(methodType, endpointURI, token, body) {
-    
+
     $.ajax({
         type: methodType,
         url: endpointURI,
@@ -261,7 +261,7 @@ function makeAjaxCallout(methodType, endpointURI, token, body) {
 
 
 function listenForIsVerified() {
-   
+
     getFirebaseRef().child("users").child(getCurrentUserUID()).child('isVerified').once('value', function (snapshot) {
         console.log('listen snapshot', snapshot.val());
         if (snapshot.val()) {
@@ -277,20 +277,23 @@ function listenForIsVerified() {
 }
 
 
-function redirect() {    
+function redirect() {
     var requestrideURL = '/requestride.html';
     window.location = requestrideURL;
 }
 
 function lazyLoadImages(AboutElement) {
-    var lazy = document.getElementsByClassName('lazy');
-    
-    for(var i=0; i<lazy.length; i++){
-     lazy[i].src = lazy[i].getAttribute('data-src');
-    }
+    return function () {
 
-    AboutElement.removeEventListener("click", lazyLoadImages);
-    AboutElement.removeEventListener("click", lazyLoadImages);
+        var lazy = document.getElementsByClassName('lazy');
+
+        for (var i = 0; i < lazy.length; i++) {
+            lazy[i].src = lazy[i].getAttribute('data-src');
+        }
+
+        AboutElement.removeEventListener("click", lazyLoadImages);
+        AboutElement.removeEventListener("touchstart", lazyLoadImages);
+    }
 
 }
 
