@@ -87,6 +87,11 @@ function createUserIfDoesntExist() {
     });
 }
 
+function redirect() {
+    var requestrideURL = '/requestride.html';
+    window.location = requestrideURL;
+}
+
 
 function handleRedirect() {
     loadSpinner(signInAnimate);
@@ -277,11 +282,6 @@ function listenForIsVerified() {
     });
 }
 
-
-function redirect() {
-    var requestrideURL = '/requestride.html';
-    window.location = requestrideURL;
-}
 
 function lazyLoadImages(AboutElement) {
     return function () {
