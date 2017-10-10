@@ -10,6 +10,84 @@ function login() {
 
 }
 
+var verifyTokenAnimate = 'verifyTokenAnimate';
+var signInAnimate = 'signInAnimate';
+
+function loadSpinner(elementId) {
+    var verifyTokenAnimate = document.getElementById(elementId);
+    if (verifyTokenAnimate) {
+        verifyTokenAnimate.previousSibling.previousSibling.innerText = '';
+        verifyTokenAnimate.style.visibility = 'visible';
+        verifyTokenAnimate.parentNode.disabled = true;
+    }
+
+}
+
+function hideSpinner(elementId, verificationMessage) {
+    var verifyTokenAnimate = document.getElementById(elementId);
+    if (verifyTokenAnimate) {
+        verifyTokenAnimate.previousSibling.previousSibling.innerText = verificationMessage;
+        verifyTokenAnimate.style.visibility = 'hidden';
+        verifyTokenAnimate.parentNode.disabled = false;
+    }
+
+}
+
+function getFirebaseRef() {
+    return firebase.database().ref();
+}
+
+function getCurrentUser() {
+    return firebase.auth().currentUser;
+}
+
+function getCurrentUserUID() {
+    return firebase.auth().currentUser.uid;
+}
+
+function getCurrentUserEmail() {
+    return firebase.auth().currentUser.email;
+}
+
+function createUser() {
+    var currentUser = getCurrentUser();
+    var users = getFirebaseRef().child("users");
+    users.child(currentUser.uid).set({
+        personalEmail: 'personalEmail',
+    }).then(function (sucess) {
+        $("#myModalVerifyUser").modal();
+    }).catch(function (error) {
+        alert('error cannot create user', error);
+    });
+}
+
+
+function createUserIfDoesntExist() {
+
+    var user = getFirebaseRef().child("users").child(getCurrentUserUID());
+
+    user.once('value', function (snapshot) {
+
+        if (snapshot.val()) {
+            if (snapshot.val().isVerified) {
+                console.log('user is verfied');
+                redirect();
+            } else {
+                $("#myModalVerifyUser").modal();
+            }
+        }
+        else {
+            createUser();
+        }
+    }).then(function (success) {
+
+    }).catch(function (error) {
+        console.log('Error isVerified read ', error);
+        hideSpinner(signInAnimate, signInWithGoogle);
+    });
+}
+
+
 function handleRedirect() {
     loadSpinner(signInAnimate);
 
@@ -48,62 +126,6 @@ function handleRedirect() {
 
 }
 
-function getFirebaseRef() {
-    return firebase.database().ref();
-}
-
-function getCurrentUser() {
-    return firebase.auth().currentUser;
-}
-
-function getCurrentUserUID() {
-    return firebase.auth().currentUser.uid;
-}
-
-function getCurrentUserEmail() {
-    return firebase.auth().currentUser.email;
-}
-function createUser() {
-    var currentUser = getCurrentUser();
-    var users = getFirebaseRef().child("users");
-    users.child(currentUser.uid).set({
-        personalEmail: 'personalEmail',
-    }).then(function (sucess) {
-        $("#myModalVerifyUser").modal();
-    }).catch(function (error) {
-        alert('error cannot create user', error);
-    });
-}
-
-
-function createUserIfDoesntExist() {
-
-    var user = getFirebaseRef().child("users").child(getCurrentUserUID());
-
-    user.once('value', function (snapshot) {
-
-        if (snapshot.val()) {
-
-            if (snapshot.val().isVerified) {
-                console.log('user is verfied');
-                redirect();
-
-            } else {
-                $("#myModalVerifyUser").modal();
-
-            }
-        }
-        else {
-            createUser();
-
-        }
-    }).then(function (success) {
-
-    }).catch(function (error) {
-        console.log('Error isVerified read ', error);
-        hideSpinner(signInAnimate, signInWithGoogle);
-    });
-}
 
 
 function signOut() {
@@ -152,27 +174,6 @@ function saveShellMailId() {
         });
     } else {
         alert('please enter the Org mail id');
-    }
-
-}
-var verifyTokenAnimate = 'verifyTokenAnimate';
-var signInAnimate = 'signInAnimate';
-
-function loadSpinner(elementId) {
-    var verifyTokenAnimate = document.getElementById(elementId);
-    if (verifyTokenAnimate) {
-        verifyTokenAnimate.previousSibling.previousSibling.innerText = '';
-        verifyTokenAnimate.style.visibility = 'visible';
-        verifyTokenAnimate.parentNode.disabled = true;
-    }
-
-}
-function hideSpinner(elementId, verificationMessage) {
-    var verifyTokenAnimate = document.getElementById(elementId);
-    if (verifyTokenAnimate) {
-        verifyTokenAnimate.previousSibling.previousSibling.innerText = verificationMessage;
-        verifyTokenAnimate.style.visibility = 'hidden';
-        verifyTokenAnimate.parentNode.disabled = false;
     }
 
 }
