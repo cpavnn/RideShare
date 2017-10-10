@@ -11,6 +11,8 @@ var markers = [];
 
 var isMarkerChanged = true;
 
+var j$ = jQuery.noConflict();
+
 /* ---------------------------------------------------------------- */
 var listObj;
 
@@ -175,15 +177,6 @@ function openNav() {
 
 function closeNav() {
     document.getElementById("mySidenav").style.transform = "translate3d(-100%,0,0)";
-}
-
-/* ---------------------------------------------------------------- */
-
-var j$;
-
-function setTheTable() {
-    j$ = jQuery.noConflict();
-
 }
 
 /* ---------------------------------------------------------------- */
@@ -533,7 +526,6 @@ function showSnackbar(elementID, message, timeout) {
     }, timeout);
 }
 
-j$ = jQuery.noConflict();
 
 j$('.navbar-toggle').on('click', function () {
 
