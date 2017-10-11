@@ -61,6 +61,10 @@ function createUser() {
     });
 }
 
+function redirect() {
+    var requestrideURL = '/requestride.html';
+    window.location = requestrideURL;
+}
 
 function createUserIfDoesntExist() {
 
@@ -85,11 +89,6 @@ function createUserIfDoesntExist() {
         console.log('Error isVerified read ', error);
         hideSpinner(signInAnimate, signInWithGoogle);
     });
-}
-
-function redirect() {
-    var requestrideURL = '/requestride.html';
-    window.location = requestrideURL;
 }
 
 
@@ -183,6 +182,22 @@ function saveShellMailId() {
 
 }
 
+function listenForIsVerified() {
+    
+        getFirebaseRef().child("users").child(getCurrentUserUID()).child('isVerified').once('value', function (snapshot) {
+            console.log('listen snapshot', snapshot.val());
+            if (snapshot.val()) {
+                console.log('user verified');
+                redirect();
+            } else {
+                console.log('user not verified');
+                hideSpinner(verifyTokenAnimate, 'VERIFY');
+                alert('The entered the Token doesnt match !! Please Enter the correct token');
+    
+            }
+        });
+    }
+
 function verifyTheUserToken() {
 
     if (!document.getElementById('usertoken')) {
@@ -266,21 +281,7 @@ function makeAjaxCallout(methodType, endpointURI, token, body) {
 }
 
 
-function listenForIsVerified() {
 
-    getFirebaseRef().child("users").child(getCurrentUserUID()).child('isVerified').once('value', function (snapshot) {
-        console.log('listen snapshot', snapshot.val());
-        if (snapshot.val()) {
-            console.log('user verified');
-            redirect();
-        } else {
-            console.log('user not verified');
-            hideSpinner(verifyTokenAnimate, 'VERIFY');
-            alert('The entered the Token doesnt match !! Please Enter the correct token');
-
-        }
-    });
-}
 
 
 function lazyLoadImages(AboutElement) {
