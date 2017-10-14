@@ -39,6 +39,13 @@ function showSnackbar(elementID, message, timeout) {
             x.className = "snackbar";
         }, timeout);
     }
+
+    var uidList;
+    
+    function clearuidList() {
+        uidList = [];
+    }
+    
 function suggest(proximity) {
 
 
@@ -82,11 +89,6 @@ function initialiseGeoQuery() {
 
 }
 
-var uidList;
-
-function clearuidList() {
-    uidList = [];
-}
 
 var geoQuery;
 var keysEntered = false;
