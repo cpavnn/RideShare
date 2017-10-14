@@ -16,6 +16,12 @@ var j$ = jQuery.noConflict();
 /* ---------------------------------------------------------------- */
 var listObj;
 
+
+function openNav() {
+    browserHistoryPush();
+    document.getElementById("mySidenav").style.transform = "translate3d(0,0,0)";
+}
+
 function suggest(proximity) {
 
 
@@ -166,12 +172,6 @@ function populateTable(carpooluser, carpooluserKey) {
 }
 
 
-/* ---------------------------------------------------------------- */
-
-function openNav() {
-    browserHistoryPush();
-    document.getElementById("mySidenav").style.transform = "translate3d(0,0,0)";
-}
 
 
 /* ---------------------------------------------------------------- */
