@@ -106,9 +106,9 @@ function runGeoQuery() {
             userRef.once('value').then(function (snapshot) {
 
                 if ((snapshot.val().remainingSeats > 0 || !snapshot.hasChild('remainingSeats')) && snapshot.key !== getCurrentUserUID()) {
-                    if (typeof snapshot.val().car !== "undefined")
+                    if (typeof snapshot.val().car !== "undefined") {
                         populateTable(snapshot.val(), snapshot.key);
-
+                    }
                 }
             }).then().catch(function (error) {
                 console.log('error reading user data: ', error);
@@ -145,8 +145,9 @@ function replaceTag(tag) {
 
 function safe_tags_replace(str) {
 
-    if (typeof str !== "undefined")
+    if (typeof str !== "undefined") {
         return str.replace(/[&<>]/g, replaceTag);
+    }
 }
 
 
