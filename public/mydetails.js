@@ -14,6 +14,19 @@ function alertError() {
 }
 
 
+function showSnackbar(elementID, message, timeout) {
+
+    var x = document.getElementById(elementID);
+    x.innerHTML = message;
+
+    x.className = "snackbar show";
+
+    setTimeout(function () {
+        var x = document.getElementById(elementID);
+        x.innerHTML = '';
+        x.className = "snackbar";
+    }, timeout);
+}
 
 function validate(ele) {
     if (ele.value) {
@@ -1495,20 +1508,6 @@ function signOut() {
 
 function redirect(URL) {
     window.location = URL;
-}
-
-function showSnackbar(elementID, message, timeout) {
-
-    var x = document.getElementById(elementID);
-    x.innerHTML = message;
-
-    x.className = "snackbar show";
-
-    setTimeout(function () {
-        var x = document.getElementById(elementID);
-        x.innerHTML = '';
-        x.className = "snackbar";
-    }, timeout);
 }
 
 function tourDetails() {
