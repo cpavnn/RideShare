@@ -25,6 +25,29 @@ function validate(ele) {
     }
 }
 
+saveEmpRequest = function (veh, cap, vehnum, homeLoc, leaveTo, leaveFrom) {
+
+    var currentUserKey = getCurrentUserUID();
+    var userRef = getFirebaseRef().child("users");
+    userRef.child(currentUserKey).update({
+        car: veh,
+        capacity: cap,
+        vehicleNumber: vehnum,
+        homeLocation: homeLoc,
+        leaveHomeAt: leaveTo,
+        leaveOfficeAt: leaveFrom,
+
+
+    }).then(function (result) {
+        alertSaved();
+    }).catch(function (error) {
+        console.log('error', error);
+        alertError();
+    });
+
+
+};
+
 function checkFields() {
 
     var vehicleName = document.getElementById('j_id0:detailFrm:vehicle');
@@ -740,29 +763,6 @@ callctr = function (loadRoute) {
 
 
 
-
-saveEmpRequest = function (veh, cap, vehnum, homeLoc, leaveTo, leaveFrom) {
-
-    var currentUserKey = getCurrentUserUID();
-    var userRef = getFirebaseRef().child("users");
-    userRef.child(currentUserKey).update({
-        car: veh,
-        capacity: cap,
-        vehicleNumber: vehnum,
-        homeLocation: homeLoc,
-        leaveHomeAt: leaveTo,
-        leaveOfficeAt: leaveFrom,
-
-
-    }).then(function (result) {
-        alertSaved();
-    }).catch(function (error) {
-        console.log('error', error);
-        alertError();
-    });
-
-
-};
 
 /* FIREBASE */
 
