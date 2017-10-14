@@ -25,6 +25,27 @@ function openNav() {
 function removeCurrentSuggestions() {
     j$('.userInfoCard').remove();
 }
+
+function showSnackbar(elementID, message, timeout) {
+    
+        var x = document.getElementById(elementID);
+        x.innerHTML = message;
+    
+        x.className = "snackbar show";
+    
+        setTimeout(function () {
+            var x = document.getElementById(elementID);
+            x.innerHTML = '';
+            x.className = "snackbar";
+        }, timeout);
+    }
+
+    var uidList;
+    
+    function clearuidList() {
+        uidList = [];
+    }
+    
 function suggest(proximity) {
 
 
@@ -68,11 +89,6 @@ function initialiseGeoQuery() {
 
 }
 
-var uidList;
-
-function clearuidList() {
-    uidList = [];
-}
 
 var geoQuery;
 var keysEntered = false;
@@ -514,19 +530,7 @@ function redirect(URL) {
     window.location = URL;
 }
 
-function showSnackbar(elementID, message, timeout) {
 
-    var x = document.getElementById(elementID);
-    x.innerHTML = message;
-
-    x.className = "snackbar show";
-
-    setTimeout(function () {
-        var x = document.getElementById(elementID);
-        x.innerHTML = '';
-        x.className = "snackbar";
-    }, timeout);
-}
 
 
 j$('.navbar-toggle').on('click', function () {
