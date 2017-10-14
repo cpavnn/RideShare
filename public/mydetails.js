@@ -28,6 +28,10 @@ function showSnackbar(elementID, message, timeout) {
     }, timeout);
 }
 
+function toggleSearch(opt) {
+    document.getElementById('pac-input').style.visibility = opt;
+}
+
 function validate(ele) {
     if (ele.value) {
         ele.style.outline = 'none';
@@ -351,9 +355,6 @@ function clearSelectedClass(cls) {
 
 /* ---------------------------------------------------------------- */
 
-function toggleSearch(opt) {
-    document.getElementById('pac-input').style.visibility = opt;
-}
 
 /* ---------------------------------------------------------------- */
 
