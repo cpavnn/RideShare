@@ -34,12 +34,12 @@ function checkFields() {
     var leaveTo = document.getElementById('j_id0:detailFrm:leaveTo');
     var leaveFrom = document.getElementById('j_id0:detailFrm:leaveFrom');
 
-    if (validate(vehicleName)) return;
-    if (validate(vehicleCapacity)) return;
-    if (validate(vehicleNum)) return;
-    if (validate(homeLocation)) return;
-    if (validate(leaveTo)) return;
-    if (validate(leaveFrom)) return;
+    if (validate(vehicleName)){ return;}
+    if (validate(vehicleCapacity)) {return;}
+    if (validate(vehicleNum)) {return;}
+    if (validate(homeLocation)) {return;}
+    if (validate(leaveTo)) {return;}
+    if (validate(leaveFrom)) {return;}
 
 
 
