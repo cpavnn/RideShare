@@ -16,6 +16,9 @@ var j$ = jQuery.noConflict();
 /* ---------------------------------------------------------------- */
 var listObj;
 
+function browserHistoryPush() {
+    history.pushState(1, 'detailsOpened', 'requestride.html#open');
+}
 
 function openNav() {
     browserHistoryPush();
@@ -564,9 +567,6 @@ function popStateHandler(event) {
     }
 }
 
-function browserHistoryPush() {
-    history.pushState(1, 'detailsOpened', 'requestride.html#open');
-}
 
 function browserHistoryinit() {
     historySupported = isSupportedBrowserHistory();
