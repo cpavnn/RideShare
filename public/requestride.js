@@ -22,6 +22,9 @@ function openNav() {
     document.getElementById("mySidenav").style.transform = "translate3d(0,0,0)";
 }
 
+function removeCurrentSuggestions() {
+    j$('.userInfoCard').remove();
+}
 function suggest(proximity) {
 
 
@@ -136,9 +139,7 @@ function runGeoQuery() {
 
 /* -------------------------------------------------------------- */
 
-function removeCurrentSuggestions() {
-    j$('.userInfoCard').remove();
-}
+
 var tagsToReplace = {
     '&': '&amp;',
     '<': '&lt;',
