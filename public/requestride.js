@@ -25,6 +25,20 @@ function openNav() {
 function removeCurrentSuggestions() {
     j$('.userInfoCard').remove();
 }
+
+function showSnackbar(elementID, message, timeout) {
+    
+        var x = document.getElementById(elementID);
+        x.innerHTML = message;
+    
+        x.className = "snackbar show";
+    
+        setTimeout(function () {
+            var x = document.getElementById(elementID);
+            x.innerHTML = '';
+            x.className = "snackbar";
+        }, timeout);
+    }
 function suggest(proximity) {
 
 
@@ -514,19 +528,7 @@ function redirect(URL) {
     window.location = URL;
 }
 
-function showSnackbar(elementID, message, timeout) {
 
-    var x = document.getElementById(elementID);
-    x.innerHTML = message;
-
-    x.className = "snackbar show";
-
-    setTimeout(function () {
-        var x = document.getElementById(elementID);
-        x.innerHTML = '';
-        x.className = "snackbar";
-    }, timeout);
-}
 
 
 j$('.navbar-toggle').on('click', function () {
