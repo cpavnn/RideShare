@@ -1,3 +1,11 @@
+## Lighthouse scores
+
+[![Lighthouse score: 85/100](https://lighthouse-badge.appspot.com/?score=100&category=PWA)](https://github.com/ebidel/lighthouse-badge)
+[![Lighthouse score: 98/100](https://lighthouse-badge.appspot.com/?score=98&category=Perf)](https://github.com/ebidel/lighthouse-badge)
+[![Lighthouse score: 100/100](https://lighthouse-badge.appspot.com/?score=100&category=A11y)](https://github.com/ebidel/lighthouse-badge)
+
+# About
+
 The motivation for building this app is the current traffic condition of Bengaluru.
 
 Most of the People travel alone in their vehicle, even though people want to travel together they wouldnt know who stays near their route.
