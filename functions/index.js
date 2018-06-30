@@ -17,21 +17,7 @@ const mailTransport = nodemailer.createTransport(
 
 const APP_NAME = 'The Ride Share';
 
-//admin.initializeApp(functions.config().firebase);
-// var firebaseConfig = functions.config().firebase;
-// firebaseConfig.databaseAuthVariableOverride = {
-//   uid: 'fbcfunction',
-// };
-
-var firebaseConfig = Object.assign({}, functions.config().firebase, {
-  databaseAuthVariableOverride: {
-    uid: 'some-uid',
-
-  }
-});
-
-admin.initializeApp(firebaseConfig);
-
+admin.initializeApp();
 
 function sendWelcomeEmail(email, displayName, token) {
   const mailOptions = {
@@ -48,12 +34,12 @@ function sendWelcomeEmail(email, displayName, token) {
 }
 
 exports.prepareVerificationMail = functions.database.ref('/users/{uid}/shellMailId')
-  .onWrite(event => {
-    console.log('event', event);
-    console.log('event data', event.data);
-    console.log('event data val', event.data.val());
-    if (event.data && event.data.val() != null) {
-      return event.data.adminRef.parent.once('value').then(function (snapshot) {
+  .onWrite((change, context) => {
+
+   
+    console.log('change data val', change.after.val());
+    if (change && change.after.val() != null) {
+      return change.after.ref.parent.once('value').then(function (snapshot) {
         console.log('snapval is the user id', snapshot.key);
         var userId = snapshot.key;
         //console.log('this is the userId', userId);
@@ -64,12 +50,12 @@ exports.prepareVerificationMail = functions.database.ref('/users/{uid}/shellMail
         return admin.database().ref().child('userTokens').child(userId).child('token').once('value')
           .then(function (token) {
             console.log('this is the token', token);
-            var displayName = event.data.val().toString();
+            var displayName = change.after.val().toString();
             if (displayName.indexOf('@') > -1) {
               displayName = displayName.substring(0, displayName.indexOf('@'));
             }
             console.log('displayName', displayName);
-            return sendWelcomeEmail(event.data.val(), displayName, token.val());
+            return sendWelcomeEmail(change.after.val(), displayName, token.val());
           }).catch(function (error) {
             console.log('error in reading the user token', error);
             return;
@@ -85,13 +71,11 @@ exports.prepareVerificationMail = functions.database.ref('/users/{uid}/shellMail
   });
 
 exports.setTheToken = functions.database.ref('/users/{uid}/personalEmail')
-  .onWrite(event => {
+  .onWrite((change, context) => {
 
-    console.log('event data val', event.data.val());
-    console.log(typeof event.data.val());
-    if (event.data.val() != null) {
-      //
-      return event.data.adminRef.parent.once('value').then(function (snapshot) {
+      if (change.after.val() != null) {
+    
+      return change.after.ref.parent.once('value').then(function (snapshot) {
         console.log('snapval is the user id', snapshot.key);
         var userId = snapshot.key;
         //console.log('this is the userId', userId);
@@ -253,16 +237,16 @@ function verifyTheUserToken(req, res) {
 
 
 exports.handleRequestsForCarpooling = functions.database.ref('/requests/{uid}/')
-  .onWrite(event => {
+  .onWrite((change, context) => {
 
-    console.log('new val', event.data.val());
-    console.log('old val', event.data.previous.val());
+    console.log('new val',change.after.val());
+    console.log('old val', change.before.val());
 
-    var rootRef = event.data.adminRef.root.child("users");
+    var rootRef = change.ref.root.child("users");
 
-    if (event.data.val() !== null) {
-      if (event.data.previous.val() !== null) {
-        let firebaseRef = rootRef.child(event.data.previous.val().requestedTo).child('remainingSeats');
+    if (change.after.val() !== null) {
+      if (change.before.val() !== null) {
+        let firebaseRef = rootRef.child(change.before.val().requestedTo).child('remainingSeats');
 
         firebaseRef.transaction(function (remainingSeats) {
           console.log('remainingSeats11111', remainingSeats);
@@ -274,7 +258,7 @@ exports.handleRequestsForCarpooling = functions.database.ref('/requests/{uid}/')
           console.warn('error', error);
         });
       }
-      let firebaseRef = rootRef.child(event.data.val().requestedTo).child('remainingSeats');
+      let firebaseRef = rootRef.child(change.after.val().requestedTo).child('remainingSeats');
       firebaseRef.transaction(function (remainingSeats) {
         console.log('remainingSeats', remainingSeats);
         return remainingSeats - 1;
@@ -293,15 +277,15 @@ exports.handleRequestsForCarpooling = functions.database.ref('/requests/{uid}/')
 
 
 exports.setRemainingSeatsOnCapacityChange = functions.database.ref('/users/{uid}/capacity')
-  .onWrite(event => {
+  .onWrite((change, context) => {
 
-    if (event.data.previous.val() == event.data.val())
+    if (change.before.val() == change.after.val())
       return;
 
     var userId = '';
 
-    if (event.data && event.data.val() != null) {
-      return event.data.adminRef.parent.once('value').then(function (snapshot) {
+    if (change && change.after.val() != null) {
+      return change.ref.parent.once('value').then(function (snapshot) {
         console.log('snapval is the user id', snapshot.key);
         userId = snapshot.key;
         console.log('userid', userId);
@@ -317,9 +301,9 @@ exports.setRemainingSeatsOnCapacityChange = functions.database.ref('/users/{uid}
           return 0;
       }).then(function (activeRequest) {
         var userRef = admin.database().ref().child("users").child(userId);
-        console.log('this is the capacity', event.data.val());
+        console.log('this is the capacity',  change.after.val());
         console.log('this is the activeRequest', activeRequest);
-        var remainingSeats = event.data.val() - activeRequest;
+        var remainingSeats =  change.after.val() - activeRequest;
         return userRef.update({
           remainingSeats: remainingSeats,
         });
