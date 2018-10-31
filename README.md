@@ -89,27 +89,40 @@ For any question and clarification please email me.
 * Delete the existing requests on a nightly basis
     - Why? Whenever a person requests for a ride, the app reduces the capacity of car of the person who is offering ride
     - We cannot track the completion of the ride currently, hence we cannot reset the capacity after the ride completion, hence every night we need to reset the capacity
-
+    - We have `removeActiveRequests` a `http`in `functions/index.js` which will reset the capacity.
+    - This needs to be called at regualr intervals, so we need to setup a cron job.
 ## Set up a cron job to trigger the http endpoint
-* The `http` method is in `functions` folder in `index.js` i.e. `removeActiveRequests`
-* We create and set a key to securely trigger this, 
+* We create and set a key to securely trigger this, for this we need npm packagge by name `crypto`, type the following in the command line.
 ```
 npm install -g crypto
 node -e "console.log(require('crypto').randomBytes(20).toString('hex'))"
 
+```
+
+* Copy the generated key and set it in `firebase`
+
+```
 firebase functions:config:set cron.key="<GENERATED_KEY>"
+```
+* Verfiy if the right key is set
+```
 firebase functions:config:get cron.key
 ```
-* The url will be
+* Deploy this using `firebase deploy`
+* Now we have the endpoint to trigger and the structure of the url will be
  ```
  https://us-central1-<PROJECT-ID>.cloudfunctions.net/removeActiveRequests?key=<YOUR_KEY>
  ```
-* we will use <https://cron-job.org/en/> to set up the nightly trigger, because its 
+* we will use <https://cron-job.org/en/> to set up a nightly trigger, you can use any other service, we have chosen this as its 
 free
 * Open and sign up for `cron-job.org`, put the above url, and set to frequency to everyday 23.30 Hrs
+* You are all set !
 
+____________________________
+
+# To be updated 
 # Developer docs
-# To be updated
+
 # App design 
 
 # Database structure
